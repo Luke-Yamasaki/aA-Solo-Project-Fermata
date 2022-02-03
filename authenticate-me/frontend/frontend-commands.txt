@@ -1,0 +1,6 @@
+npm install js-cookie
+npm install react-redux
+npm install react-router-dom@^5
+npm install redux
+npm install redux-thunk
+npm install -D redux-logger
