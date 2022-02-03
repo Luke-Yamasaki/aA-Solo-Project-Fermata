@@ -1,0 +1,128 @@
+authenticate-me
+├── backend
+    ├── npm init -y
+└── frontend
+
+
+backend
+├── .gitignore (node_modules, .env, build, .DS_Store)
+npm install
+    npm install bcryptjs
+    npm install cookie-parser
+    npm install cors
+    npm install csurf
+    npm install dotenv
+    npm install express
+    npm install express-async-handler
+    npm install express-validator
+    npm install helmet
+    npm install jsonwebtoken
+    npm install morgan
+    npm install per-env
+    npm install pg@">=8.4.1"
+    npm install sequelize@5
+    npm install sequelize-cli@5
+npm install -D
+    npm install -D dotenv-cli
+    npm install -D nodemon
+
+
+Configuration
+.env.example
+.env (
+    PORT=5000
+    DB_USERNAME=auth_app
+    DB_PASSWORD=«auth_app user password»
+    DB_DATABASE=auth_db
+    DB_HOST=localhost
+    JWT_SECRET=«generate_strong_secret_here» //openssl rand -base64 10
+    JWT_EXPIRES_IN=604800
+    )
+
+
+backend
+├── config
+    ├──index.js
+            module.exports = {
+            environment: process.env.NODE_ENV || 'development',
+            port: process.env.PORT || 5000,
+            db: {
+                username: process.env.DB_USERNAME,
+                password: process.env.DB_PASSWORD,
+                database: process.env.DB_DATABASE,
+                host: process.env.DB_HOST
+            },
+            jwtConfig: {
+                secret: process.env.JWT_SECRET,
+                expiresIn: process.env.JWT_EXPIRES_IN
+            }
+            };
+├── db
+├── node_modules
+├──.env
+├──.sequelizerc
+        const path = require('path');
+
+        module.exports = {
+        config: path.resolve('config', 'database.js'),
+        'models-path': path.resolve('db', 'models'),
+        'seeders-path': path.resolve('db', 'seeders'),
+        'migrations-path': path.resolve('db', 'migrations')
+        };
+├──package.json
+├──package-lock.json
+
+
+npx sequelize init
+
+backend
+├── config
+    ├── database.js
+            const config = require('./index');
+
+            const db = config.db;
+            const username = db.username;
+            const password = db.password;
+            const database = db.database;
+            const host = db.host;
+
+            module.exports = {
+                development: {
+                    username,
+                    password,
+                    database,
+                    host,
+                    dialect: 'postgres',
+                    seederStorage: 'sequelize'
+                },
+                production: {
+                    use_env_variable: 'DATABASE_URL',
+                    dialect: 'postgres',
+                    seederStorage: 'sequelize',
+                    dialectOptions: {
+                        ssl: {
+                            require: true,
+                            rejectUnauthorized: false
+                        }
+                    }
+                }
+            }
+
+
+psql -c "CREATE USER <username> PASSWORD '<password>' CREATEDB"
+
+npx dotenv sequelize db:create
+
+create app.js
+    const express = require('express');
+    const morgan = require('morgan');
+    const cors = require('cors');
+    const csurf = require('csurf');
+    const helmet = require('helmet');
+    const cookieParser = require('cookie-parser');
+    const { environment } = require('./config');
+    const isProduction = environment === 'production';
+
+    const app = express();
+
+    app.use(morgan('dev'))
