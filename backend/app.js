@@ -14,15 +14,16 @@ const routes = require('./routes');
 const app = express();
 
 app.set('S3', "../S3");
-app.use(express.static('./public'));
+app.use(express.static('../../frontend/public'));
 app.engine('html', require('ejs').renderFile);
-app.listen(process.env.PORT || 3000);
+
 const S3_BUCKET = process.env.S3_BUCKET;
 
 aws.config.region = 'us-east-1';
 
 app.use(morgan('dev'))
 app.use(cookieParser());
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Security Middleware

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const apiRouter = require('./api');
 
-router.use('https://api', apiRouter);
+router.use('/api', apiRouter);
 
 // Static routes
 // Serve React build files in production

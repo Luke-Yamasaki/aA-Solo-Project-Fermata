@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
+import Signup from "./components/Signup";
 import Navigation from "./components/Navigation";
+import Welcome from "./components/Welcome";
+import Login from "./components/Login";
+import Home from "./components/Home";
+import Discover from "./components/Discover";
+import Upload from "./components/Upload";
+import Users from "./components/Users";
+import Settings from "./components/Settings";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,31 +25,34 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/">
-            <WelcomePage />
+            <Welcome />
           </Route>
           <Route path="/login">
-              <LoginFormPage />
+              <Login />
           </Route>
           <Route path="/signup">
-            <SignupFormPage />
+            <Signup />
           </Route>
           <Route path="/home">
-            <HomePage />
+            <Home />
           </Route>
           <Route path="/discover">
             <Discover />
           </Route>
           <Route path="/upload">
-            <UploadFormPage />
+            <Upload />
           </Route>
           <Route path="/users">
-            <ProfilePage />
+            <Users />
           </Route>
           <Route path="/albums">
             <Albums />
           </Route>
           <Route path="/tracks">
             <Tracks />
+          </Route>
+          <Route path="/settings">
+            <Settings />
           </Route>
         </Switch>
       )}
