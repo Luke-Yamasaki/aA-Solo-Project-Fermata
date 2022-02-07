@@ -27,6 +27,8 @@ const validateSignup = [
     handleValidationErrors
 ];
 
+router.get()
+
 router.post(
 '/',
 validateSignup,

@@ -8,5 +8,6 @@ const { User } = require('../../db/models');
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
+router.use('/')
 
 module.exports = router;
