@@ -3,8 +3,8 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 1920px;
-    height: 1080px;
+    width: 100vw;
+    height: 100vh;
     background: linear-gradient(to bottom, #C77DFF, #753ADB);
 }
 
@@ -123,17 +123,22 @@
 }
 
 .login-input {
-    font-family: antarctican-headlinesans-serif;
+    font-family: antarctican-headline, sans-serif;
     font-weight: 400;
     font-style: normal;
     margin-left: 10px;
     margin-top: 25px;
 }
 
-.login-button {
+.signup-button {
+    font-family: antarctican-headline, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
     width: 355px;
     height: 30px;
     color: white;
+    text-align: center;
     border: none;
     border-radius: 0.25em;
     margin-left: 75px;
@@ -141,6 +146,6 @@
     background-image: linear-gradient(rgba(200, 125, 255, 0.25), rgba(120, 60, 220, 0.25));
 }
 
-.login-button:hover {
+.signup-button:hover {
     background-image: linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));
 }

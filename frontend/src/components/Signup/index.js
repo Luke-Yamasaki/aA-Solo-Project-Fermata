@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import "./SignupForm.css";
+import "./Signup.css";
 
 export function Signup() {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ export function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault();
     let newErrors = [];
-    dispatch(Signup({ username, email, password, image }))
+    dispatch(sessionActions.signup({ username, email, password, image }))
       .then(() => {
         setUsername("");
         setEmail("");
@@ -114,7 +114,7 @@ export function Signup() {
               onChange={(e) => setImage(e.target.value)}
             />
           </label>
-          <a className="login-button" href="/login">Log In</a>
+          <a className="signup-button" href="/">Sign up</a>
         </form>
       </div>
 

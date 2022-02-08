@@ -70,7 +70,7 @@ export function Login() {
       <svg width="440" height="140" xmlns="http://www.w3.org/2000/svg">
         <filter id="lightMe1">
           <feDiffuseLighting in="SourceGraphic" result="light" lighting-color="white">
-          <fePointLight x="150" y="60" z="20" />
+            <fePointLight x="150" y="60" z="20" />
           </feDiffuseLighting>
           <feComposite in="SourceGraphic" in2="light" operator="arithmetic" k1="1" k2="0" k3="0" k4="0"/>
         </filter>
