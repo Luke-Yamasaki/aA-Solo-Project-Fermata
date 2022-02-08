@@ -1,3 +1,4 @@
+import res from 'express/lib/response';
 import { csrfFetch } from './csrf';
 
 const SET_USER = 'session/setUser';
@@ -72,8 +73,11 @@ export const logout = () => async (dispatch) => {
   const response = await csrfFetch('/api/session', {
     method: 'DELETE',
   });
-  dispatch(removeUser());
-  return response;
+
+  const data = await res.json();
+  if (data.message === "success") {
+    dispatch(removeUser());
+  }
 };
 
 const initialState = { user: null };
@@ -87,8 +91,7 @@ const sessionReducer = (state = initialState, action) => {
       // return newState;
       return { ...state, user: action.payload };
     case REMOVE_USER:
-      newState = Object.assign({}, state);
-      newState.user = null;
+      newState = Object.assign({}, state, { user: null});
       return newState;
     default:
       return state;

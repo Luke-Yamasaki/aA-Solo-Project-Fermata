@@ -109,15 +109,23 @@ export function Signup() {
             <input
               className="login-input"
               type="file"
-              value={image}
-              placeholder="Enter password"
-              onChange={(e) => setImage(e.target.value)}
+              placeholder="Select a profile image"
+              onChange={updateFile}
             />
           </label>
           <a className="signup-button" href="/">Sign up</a>
         </form>
       </div>
-
+      {sessionUser && (
+          <div>
+            <h1>{sessionUser.username}</h1>
+            <img
+              style={{ width: "150px" }}
+              src={user.profileImageUrl}
+              alt="profile"
+            />
+          </div>
+        )}
     </div>
   );
 }

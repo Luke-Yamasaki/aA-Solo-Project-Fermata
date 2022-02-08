@@ -1,18 +1,39 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { NavLink, Link, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
-import Search from "../Search";
 import './Navigation.css';
+import styled from "styled-components";
+import { logout } from "../../store/session";
 
-function Navigation({ isLoaded }){
+const NavWrapper = styled.nav`{}`;
+const Searchbar = styled.div`
+  <div className="searchbar">
+    <div className="search-icon"></div>
+    <form className="searchbar-form" action="search" metho="post">
+        <input className="search-input" type="search" spellcheck="on" autocorrect="off" incremental onkeyup="searchBar()" placeholder="Search Fermata" name="q" minlength="3" max-length="255">
+        </input>
+    </form>
+  </div>
+  `;
+
+function Navbar({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
+  const history = useHistory();
+  const dispatch = useDispatch();
 
+  const handleLogout = () => {
+    if (sessionUser) {
+      dispatch(logout());
+    } else {
+      history.push("/welcome");
+    }
+  };
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <nav className="navbar">
+      <NavWrapper className="navbar">
          <ul className="nav-list">
             <li className="home-item">
               <NavLink className="home-txt" exact to="/">Fermata</NavLink>
@@ -21,7 +42,13 @@ function Navigation({ isLoaded }){
               <Link className="home-txt" to='/discover'>Discover</Link>
             </li>
             <li clasName="home-item">
-              <Search />
+              <div className="searchbar">
+                <div className="search-icon"></div>
+                <form className="searchbar-form" action="search" metho="post">
+                    <input className="search-input" type="search" spellcheck="on" autocorrect="off" incremental onkeyup="searchBar()" placeholder="Search Fermata" name="q" minlength="3" max-length="255">
+                    </input>
+                </form>
+              </div>
             </li>
             <li className="home-item">
               <Link className="home-txt" to='/upload'>Upload</Link>
@@ -30,10 +57,10 @@ function Navigation({ isLoaded }){
               <ProfileButton className="home-txt" user={sessionUser}/>
             </li>
             <li className="home-item">
-            <Link className="home-txt" to='/welcome'>Logout</Link>
+            <button onClick={handleLogout}>{user ? "Logout" : "Login"}</button>
             </li>
           </ul>
-      </nav>
+      </NavWrapper>
     );
   } else {
     sessionLinks = (
@@ -46,7 +73,13 @@ function Navigation({ isLoaded }){
             <Link className="home-txt" to='/discover'>Discover</Link>
           </li>
           <li clasName="home-item">
-            <Search className="search"/>
+            <div className="searchbar">
+              <div className="search-icon"></div>
+              <form className="searchbar-form" action="search" metho="post">
+                  <input className="search-input" type="search" spellcheck="on" autocorrect="off" incremental onkeyup="searchBar()" placeholder="Search Fermata" name="q" minlength="3" max-length="255">
+                  </input>
+              </form>
+            </div>
           </li>
           <li className="home-item">
             <Link className="home-txt" to='/login'>Login</Link>
@@ -66,4 +99,4 @@ function Navigation({ isLoaded }){
   );
 }
 
-export default Navigation;
+export default Navbar;
