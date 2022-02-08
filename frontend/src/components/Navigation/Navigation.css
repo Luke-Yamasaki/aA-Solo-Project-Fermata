@@ -1,0 +1,54 @@
+.home-item {
+    list-style: none;
+}
+
+.home-txt {
+    font-family: antarctican-headline, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 100px;
+    color: black;
+}
+
+.user-button {
+    background-image: url("../../../public/icons/profile-icon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    border: 1px black;
+}
+
+.profile-dropdown {
+    width: 150px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.profile-items {
+    font-family: antarctican-headline, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 20px;
+    color: black;
+}
+
+.logout {
+    font-family: antarctican-headline, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 20px;
+    color: white;
+    border-radius: 0.25rem;
+    border: none;
+    background-image: linear-gradient(rgb(200, 125, 255), rgb(120, 60, 220));
+
+}
+
+.nav-list {
+    display: flex;
+    flex-direction: row;
+    width: 1920px;
+    height: 100px; 
+}

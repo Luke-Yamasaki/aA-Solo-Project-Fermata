@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
@@ -11,24 +11,44 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <ul className="nav-list">
+    <li className="home-item">
+      <NavLink className="home-txt" exact to="/">Home</NavLink>
+    </li>
+    <li className="home-item">
+      <Link className="home-txt" to='/discover'>Discover</Link>
+    </li>
+    <li className="home-item">
+      <Link className="home-txt" to='/upload'>Upload</Link>
+    </li>
+    <li className="home-item">
+      <ProfileButton className="home-txt" user={sessionUser}/>
+    </li>
+  </ul>
     );
   } else {
     sessionLinks = (
-      <>
-        <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
-      </>
+      <ul className="nav-list">
+        <li className="home-item">
+          <NavLink className="home-txt" exact to="/">Home</NavLink>
+        </li>
+        <li className="home-item">
+          <Link className="home-txt" to='/discover'>Discover</Link>
+        </li>
+        <li className="home-item">
+          <Link className="home-txt" to='/upload'>Upload</Link>
+        </li>
+        <li className="home-item">
+          <ProfileButton className="home-txt"/>
+        </li>
+      </ul>
     );
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    <>
+      {isLoaded && sessionLinks}
+    </>
   );
 }
 

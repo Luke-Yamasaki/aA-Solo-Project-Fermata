@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import "./SignupForm.css";
 
-function Signup() {
+export function Signup() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
@@ -19,7 +19,7 @@ function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault();
     let newErrors = [];
-    dispatch(signup({ username, email, password, image }))
+    dispatch(Signup({ username, email, password, image }))
       .then(() => {
         setUsername("");
         setEmail("");
@@ -59,15 +59,26 @@ function Signup() {
               <li className="login-error-item" key={idx}>{error}</li>
             ))}
           </ul>
-          <h1 className="login-header">Login</h1>
+          <h1 className="login-header">Sign up</h1>
           <label className="login-label">
-            Username or Email
+            Username
             <input
               className="login-input"
               type="text"
-              value={credential}
-              placeholder="Enter username or email"
-              onChange={(e) => setCredential(e.target.value)}
+              value={username}
+              placeholder="Enter username"
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </label>
+          <label className="login-label">
+            Email
+            <input
+              className="login-input"
+              type="text"
+              value={username}
+              placeholder="Enter email"
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </label>
@@ -82,7 +93,28 @@ function Signup() {
               required
             />
           </label>
-          <button className="login-button" type="submit">Log In</button>
+          <label className="login-label">
+            Confirm password
+            <input
+              className="login-input"
+              type="password"
+              value={confirmPassword}
+              placeholder="Enter password"
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+          </label>
+          <label className="login-label">
+            Upload photo
+            <input
+              className="login-input"
+              type="file"
+              value={image}
+              placeholder="Enter password"
+              onChange={(e) => setImage(e.target.value)}
+            />
+          </label>
+          <a className="login-button" href="/login">Log In</a>
         </form>
       </div>
 
