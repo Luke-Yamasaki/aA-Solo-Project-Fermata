@@ -40,46 +40,48 @@ function Navbar({ isLoaded }){
       history.push("/welcome");
     }
   };
+
   let sessionLinks;
+
   if (sessionUser) {
     sessionLinks = (
-      <NavWrapper className="navbar">
+      <nav className="navbar">
          <ul className="nav-list">
-            <li className="home-item">
-              <NavLink className="home-txt" exact to="/">Fermata</NavLink>
+            <li>
+              <NavLink className="home-logo" exact to="/">Fermata</NavLink>
             </li>
-            <li className="home-item">
+            <li>
               <Link className="home-txt" to='/discover'>Discover</Link>
             </li>
-            <li clasName="home-item">
+            <li>
               <div className="searchbar">
                 <div className="search-icon"></div>
                 <form className="searchbar-form" action="search" metho="post">
-                    <input className="search-input" type="search" spellcheck="on" autocorrect="off" incremental onkeyup="searchBar()" placeholder="Search Fermata" name="q" minlength="3" max-length="255">
+                    <input className="search-input" type="search" spellcheck="on" autocorrect="off" incremental onkeyup="searchBar()" placeholder="Search Fermata" name="q" minlength="3" max-length="255" autocomplete='on'>
                     </input>
                 </form>
               </div>
             </li>
-            <li className="home-item">
+            <li>
               <Link className="home-txt" to='/upload'>Upload</Link>
             </li>
-            <li className="home-item">
+            <li>
               <ProfileButton className="home-txt" user={sessionUser}/>
             </li>
-            <li className="home-item">
-            <button onClick={handleLogout}>{sessionUser ? "Logout" : "Login"}</button>
+            <li>
+              <Link className="home-txt" onClick={handleLogout} to='/welcome'>{sessionUser ? "Logout" : "Login"}</ Link>
             </li>
           </ul>
-      </NavWrapper>
+      </ nav>
     );
   } else {
     sessionLinks = (
       <nav className="navbar">
         <ul className="nav-list">
-          <li className="home-item">
+          <li>
             <NavLink className="home-logo" exact to="/">Fermata</NavLink>
           </li>
-          <li className="home-item">
+          <li>
             <Link className="home-txt" to='/discover'>Discover</Link>
           </li>
           <li clasName="home-item">
@@ -91,11 +93,11 @@ function Navbar({ isLoaded }){
               </form>
             </div>
           </li>
-          <li className="home-item">
-            <Link className="home-txt" to='/login'>Login</Link>
-          </li>
-          <li className="home-item">
+          <li>
             <Link className="home-txt" to='/signup'>Sign up</Link>
+          </li>
+          <li>
+            <Link className="home-txt" onClick={handleLogout}>{sessionUser ? "Logout" : "Login"}</ Link>
           </li>
         </ul>
       </nav>
