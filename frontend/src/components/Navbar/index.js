@@ -54,6 +54,9 @@ function Navbar({ isLoaded }){
               <Link className="home-txt" to='/discover'>Discover</Link>
             </li>
             <li>
+              <Link className="home-txt" to='/stream'>Stream</Link>
+            </li>
+            <li>
               <div className="searchbar">
                 <div className="search-icon"></div>
                 <form className="searchbar-form" action="search" metho="post">
@@ -83,6 +86,9 @@ function Navbar({ isLoaded }){
           </li>
           <li>
             <Link className="home-txt" to='/discover'>Discover</Link>
+          </li>
+          <li>
+            <Link className="home-txt" to='/stream'>Stream</Link>
           </li>
           <li clasName="home-item">
             <div className="searchbar">

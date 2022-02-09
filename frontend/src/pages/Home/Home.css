@@ -2,54 +2,55 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
-    width: 1920px;
-    height: 1080px;
-    background: linear-gradient(to bottom, #C77DFF, #753ADB);
+    align-items: flex-start;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('./Login-bg.png');
+    background-size: contain;
+    overflow: scroll;
 }
 
-.form-wrapper {
+.feed-container {
     display: flex;
     flex-direction: row;
-    width: 1600px;
-    height: 900px;
-}
-
-.illustration-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 800px;
-    height: 900px;
+    width: 60vw;
+    height: auto;
     background-color: white;
-    border-top-left-radius: 5rem;
-    border-bottom-left-radius: 5rem;
-    background-image: url("./Login-bg.png");
 }
 
-.glass-card{
-    width: 600px;
-    height: 700px;
-    background-color: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(50px) brightness(125%);
-    border-radius: 1rem;
+.post-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
-    padding-left: 40px;
-
+    width: 40vw;
+    height: 300px;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(50px) brightness(125%);
+    overflow: hidden;
 }
 
-.form-header {
-    font-family: antarctican-headline, sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 100px;
-    color: white;
+.artists-slideshow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 40vw;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(50px) brightness(125%);
+}
+
+.artist-container {
+    display: flex;
+    flex-direction: column;
     margin: 0px;
+    width: 400px;
+    height: 500px;
 }
 
+.artist-pic {
+    background-color: black;
+    width: 100px;
+    height: 100px;
+}
 .form-h2 {
     font-family: antarctican-headline, sans-serif;
     font-weight: 400;
@@ -143,4 +144,21 @@
 
 .login-button:hover {
     background-image: linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));
+}
+
+.post-title {
+    font-family: antarctican-headline, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 24px;
+    color: black;
+    margin-bottom: -1vh;
+}
+
+.post-info {
+    font-family: antarctican-headline, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    color: black;
 }

@@ -1,73 +1,46 @@
-// import React, { useState } from "react";
-// import * as sessionActions from "../../store/session";
-// import { useDispatch } from "react-redux";
-// import "./LoginFormModal.css";
+import "./Upload.css";
+import Navbar from "../../components/Navbar";
+import styled from "styled-components";
 
-// function LoginForm() {
-//   const dispatch = useDispatch();
-//   const [credential, setCredential] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [errors, setErrors] = useState([]);
+export default function Home() {
+  return (
+    <>
+        <Navbar />
+        <div className="wrapper">
+            <div className="form-container">
+                <div className="upload-info-container">
+                    <div className="txt-btn-container">
+                        <h2 className="info-title">0% of free uploads used</h2>
+                        <div className="v-btn">v</div>
+                    </div>
+                    <div className="storage-bar"></div>
+                    <p className="storage-info">0 of 180 minutes (0%) used. </p>
+                </ div>
+                <form className="dragndrop-box" method="post" action="" enctype="multipart/form-data">
+                    <div className="dragndrop-input">
+                        <input className="dragndrop-files" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+                    </div>
+                    <label for="file"></label>
+                        <button className="upload-btn" type="submit">Upload</button>
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     setErrors([]);
-//     return dispatch(sessionActions.login({ credential, password })).catch(
-//       async (res) => {
-//         const data = await res.json();
-//         if (data && data.errors) setErrors(data.errors);
-//       }
-//     );
-//   };
+                    <div class="uploading-box">Uploading…</div>
+                    <div class="success-box">Done!</div>
+                    <div class="error-box">Error! <span></span>.</div>
+                </form>
+                <div className="terms-and-conditions">
+                    <p>By uploading to Fermata, you agree to waive all copyrights and register you file as a Creative Commons Zero domain. </p>
+                </div>
+                {/* <form className="drag-drop-box" method="post" action="" enctype='multipart/form-data'>
+                    <div className="upload-input">
 
-//   return (
-//     <div className="wrapper">
-//       <div className="form-wrapper">
-//         <div className="illustration-container">
-//           <div className="glass-card">
-//             <h1 className="form-header">Fermata</h1>
-//             <h2 className="form-h2">Share and discover Creative Commons Zero music!</h2>
-//             <p className="form-p">As the world's largest music and audio platform, SoundCloud lets people discover and enjoy the greatest selection of music from the most diverse creator community on earth. Since launching in 2008, the platform has become renowned for its unique content and features, including the ability to share music and connect directly with artists, as well as unearth breakthrough tracks, raw demos, podcasts and more. </p>
-//             <div className="cc0"></div>
-//             <p className="form-q">Don't have an account?<a className="sign-up"href="/signup">Sign up</a> </p>
-
-//           </div>
-//         </div>
-//         <form className="login-container" onSubmit={handleSubmit}>
-//           <ul className="login-error-list">
-//             {errors.map((error, idx) => (
-//               <li className="login-error-item" key={idx}>{error}</li>
-//             ))}
-//           </ul>
-//           <h1 className="login-header">Login</h1>
-//           <label className="login-label">
-//             Username or Email
-//             <input
-//               className="login-input"
-//               type="text"
-//               value={credential}
-//               placeholder="Enter username or email"
-//               onChange={(e) => setCredential(e.target.value)}
-//               required
-//             />
-//           </label>
-//           <label className="login-label">
-//             Password
-//             <input
-//               className="login-input"
-//               type="password"
-//               value={password}
-//               placeholder="Enter password"
-//               onChange={(e) => setPassword(e.target.value)}
-//               required
-//             />
-//           </label>
-//           <button className="login-button" type="submit">Log In</button>
-//         </form>
-//       </div>
-
-//     </div>
-//   );
-// }
-
-// export default LoginForm;
+                    </div>
+                    <h3>Drag and drop your tracks and albums here</h3>
+                    <input type="file"></input>
+                    <input type="checkbox"></input>
+                    <input type="radio"></input>
+                </form> */}
+            </div>
+        </div>
+    </>
+  );
+}
