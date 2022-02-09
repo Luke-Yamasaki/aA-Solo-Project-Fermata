@@ -1,10 +1,10 @@
 import "./Home.css";
-import Navigation from "../Navigation";
+import Navbar from "../../components/Navbar";
 
 export default function Home() {
   return (
     <>
-      <Navigation />
+      <Navbar />
       <div className="wrapper">
         <div className="form-wrapper">
           <div className="illustration-container">

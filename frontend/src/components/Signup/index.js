@@ -121,7 +121,7 @@ export function Signup() {
             <h1>{sessionUser.username}</h1>
             <img
               style={{ width: "150px" }}
-              src={user.profileImageUrl}
+              src={sessionUser.profileImageUrl}
               alt="profile"
             />
           </div>

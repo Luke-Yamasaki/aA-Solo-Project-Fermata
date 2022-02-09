@@ -3,15 +3,16 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Signup from "./components/Signup";
-import Navigation from "./components/Navigation";
-import Login from "./components/Login";
-import Home from "./components/Home";
-import Discover from "./components/Discover";
-import Upload from "./components/Upload";
-import Users from "./components/Users";
-import Settings from "./components/Settings";
-import Tracks from "./components/Tracks";
-import Albums from "./components/Albums";
+import Navbar from "./components/Navbar";
+import Login from "./pages/Login";
+import Home from "./pages/Home";
+import Discover from "./pages/Discover";
+import Upload from "./pages/Upload";
+import Users from "./sub-pages/Users";
+import Settings from "./pages/Settings";
+import Tracks from "./sub-pages/Tracks";
+import Albums from "./sub-pages/Albums";
+import Player from "./pages/Player";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,48 +21,44 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  return (
-    <>
-      {isLoaded && (
-        <Switch>
-          <Route exact path="/">
-            <Navigation isLoaded={isLoaded} />
-            <Home />
-          </Route>
-          <Route path="/welcome">
-            <Login />
-          </Route>
-          <Route path="/signup">
-            <Signup />
-          </Route>
-          <Route path="/discover">
-            <Navigation isLoaded={isLoaded} />
-            <Discover />
-          </Route>
-          <Route path="/upload">
-            <Navigation isLoaded={isLoaded} />
-            <Upload />
-          </Route>
-          <Route path="/users">
-            <Navigation isLoaded={isLoaded} />
-            <Users />
-          </Route>
-          <Route path="/albums">
-            <Navigation isLoaded={isLoaded} />
-            <Albums />
-          </Route>
-          <Route path="/tracks">
-            <Navigation isLoaded={isLoaded} />
-            <Tracks />
-          </Route>
-          <Route path="/settings">
-            <Navigation isLoaded={isLoaded} />
-            <Settings />
-          </Route>
-        </Switch>
-      )}
-    </>
-  );
-}
+  return isLoaded && (
+    <Switch>
+      <Route exact path="/">
+        <Navbar isLoaded={isLoaded} />
+        <Home />
+      </Route>
+      <Route path="/welcome">
+        <Login />
+      </Route>
+      <Route path="/signup">
+        <Signup />
+      </Route>
+      <Route path="/discover">
+        <Navbar isLoaded={isLoaded} />
+        <Discover />
+      </Route>
+      <Route path="/upload">
+        <Navbar isLoaded={isLoaded} />
+        <Upload />
+      </Route>
+      <Route path="/users">
+        <Navbar isLoaded={isLoaded} />
+        <Users />
+      </Route>
+      <Route path="/albums">
+        <Navbar isLoaded={isLoaded} />
+        <Albums />
+      </Route>
+      <Route path="/tracks">
+        <Navbar isLoaded={isLoaded} />
+        <Tracks />
+      </Route>
+      <Route path="/settings">
+        <Navbar isLoaded={isLoaded} />
+        <Settings />
+      </Route>
+    </Switch>
+  )
+};
 
 export default App;

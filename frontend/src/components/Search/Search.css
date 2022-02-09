@@ -62,7 +62,7 @@ margin-right: 10px;
 
 .search-input::-webkit-input-placeholder {
 color: rgba(255, 255, 255, 0.5);
-font-family: din-2014;
+font-family: antarctican-headline, sans-serif;
 font-size: 13px;
 font-weight: 400;
 font-style: normal;
@@ -70,7 +70,7 @@ font-style: normal;
 
 .search-input:-ms-input-placeholder {
 color: rgba(255, 255, 255, 0.5);
-font-family: din-2014;
+font-family: antarctican-headline, sans-serif;
 font-size: 13px;
 font-weight: 400;
 font-style: normal;
@@ -78,7 +78,7 @@ font-style: normal;
 
 .search-input::-moz-input-placeholder {
 color: rgba(255, 255, 255, 0.5);
-font-family: din-2014;
+font-family: antarctican-headline, sans-serif;
 font-size: 13px;
 font-weight: 400;
 font-style: normal;
@@ -86,7 +86,7 @@ font-style: normal;
 
 .search-input:-moz-input-placeholder {
 color: rgba(255, 255, 255, 0.5);
-font-family: din-2014;
+font-family: antarctican-headline, sans-serif;
 font-size: 13px;
 font-weight: 400;
 font-style: normal;

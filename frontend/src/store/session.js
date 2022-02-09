@@ -1,4 +1,3 @@
-import res from 'express/lib/response';
 import { csrfFetch } from './csrf';
 
 const SET_USER = 'session/setUser';
@@ -39,22 +38,12 @@ export const login = (user) => async (dispatch) => {
 };
 
 export const signup = (user) => async (dispatch) => {
-  const { images, image, username, email, password } = user;
+  const {username, email, password } = user;
 
   const formData = new FormData();
   formData.append("username", username);
   formData.append("email", email);
   formData.append("password", password);
-
-  // for multiple files
-  if (images && images.length !== 0) {
-    for (var i = 0; i < images.length; i++) {
-      formData.append("images", images[i]);
-    }
-  }
-
-  // for single file
-  if (image) formData.append("image", image);
 
   const res = await csrfFetch(`/api/users/`, {
     method: "POST",
@@ -70,7 +59,7 @@ export const signup = (user) => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch) => {
-  const response = await csrfFetch('/api/session', {
+  const res = await csrfFetch('/api/session', {
     method: 'DELETE',
   });
 

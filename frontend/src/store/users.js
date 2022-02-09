@@ -1,4 +1,4 @@
-import { csrfFetch } from "../util/csrf.js";
+import { csrfFetch } from "./csrf";
 
 const GET_USERS = "users/get_users";
 

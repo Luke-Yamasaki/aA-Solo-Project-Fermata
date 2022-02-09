@@ -22,10 +22,5 @@
   "bugs": {
     "url": "https://github.com/Luke-Yamasaki/react-redux-auth/issues"
   },
-  "homepage": "https://github.com/Luke-Yamasaki/react-redux-auth#readme",
-  "dependencies": {
-    "aws-sdk": "2.x",
-    "ejs": "2.x",
-    "express": "4.x"
-  }
+  "homepage": "https://github.com/Luke-Yamasaki/react-redux-auth#readme"
 }

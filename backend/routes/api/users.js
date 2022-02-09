@@ -17,7 +17,6 @@ const validateSignup = [
         return new Promise((resolve, reject) => {
           User.findOne({ where: { email: req.body.email } })
             .then((res) => {
-              console.log("res.....", res);
               if (res) {
                 reject("Email already taken");
               } else {
@@ -25,7 +24,7 @@ const validateSignup = [
               }
             })
             .catch((err) => {
-              rej("Database error: ", err.message);
+              reject("Database error: ", err.message);
             });
         });
       }),
@@ -44,7 +43,7 @@ const validateSignup = [
               }
             })
             .catch((err) => {
-              rej("Database error: ", err.message);
+              reject("Database error: ", err.message);
             });
         });
       }),

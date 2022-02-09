@@ -7,7 +7,15 @@ import './Navigation.css';
 import styled from "styled-components";
 import { logout } from "../../store/session";
 
-const NavWrapper = styled.nav`{}`;
+const NavWrapper = styled.nav`
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+`;
 const Searchbar = styled.div`
   <div className="searchbar">
     <div className="search-icon"></div>
@@ -17,6 +25,8 @@ const Searchbar = styled.div`
     </form>
   </div>
   `;
+
+
 
 function Navbar({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -57,7 +67,7 @@ function Navbar({ isLoaded }){
               <ProfileButton className="home-txt" user={sessionUser}/>
             </li>
             <li className="home-item">
-            <button onClick={handleLogout}>{user ? "Logout" : "Login"}</button>
+            <button onClick={handleLogout}>{sessionUser ? "Logout" : "Login"}</button>
             </li>
           </ul>
       </NavWrapper>

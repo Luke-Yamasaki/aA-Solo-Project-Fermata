@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [4, 30],
+        len: [3, 30],
         isNotEmail(value) {
           if (Validator.isEmail(value)) {
             throw new Error('Cannot be an email.');
@@ -39,13 +39,17 @@ module.exports = (sequelize, DataTypes) => {
     },
     scopes: {
       currentUser: {
-        attributes: { exclude: ['hashedPassword' ]}
+        attributes: { exclude: ['hashedPassword'] }
       },
       loginUser: {
         attributes: {}
       }
     }
   });
+
+  User.associate = function(models) {
+    // associations can be defined here
+  };
 
   User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
     const { id, username, email } = this; // context will be the User instance
@@ -56,7 +60,7 @@ module.exports = (sequelize, DataTypes) => {
     return bcrypt.compareSync(password, this.hashedPassword.toString());
   };
 
-   User.getCurrentUserById = async function (id) {
+  User.getCurrentUserById = async function (id) {
     return await User.scope('currentUser').findByPk(id);
   };
 
@@ -84,12 +88,6 @@ module.exports = (sequelize, DataTypes) => {
     });
     return await User.scope('currentUser').findByPk(user.id);
   };
-
-
-  User.associate = function(models) {
-    // associations can be defined here
-  };
-
 
   return User;
 };
