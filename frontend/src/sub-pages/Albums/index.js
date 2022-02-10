@@ -4,7 +4,7 @@ export default function Albums () {
         <svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
             <defs>
                 <linearGradient id="myGradient" className="circle-gradient" gradientTransform="rotate(90)">
-                    <stop offset="0%" stop-color="#FFF4BF" />
+                    <stop offset="0%" stop-color="yellow" />
                     <stop offset="95%"  stop-color="#C77DFF" />
                     {/* <stop offset="95%" stop-color="pink" /> */}
                 </linearGradient>

@@ -13,6 +13,7 @@ import Settings from "./pages/Settings";
 import Tracks from "./sub-pages/Tracks";
 import Albums from "./sub-pages/Albums";
 import Player from "./pages/Player";
+import Stream from "./pages/Stream";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,9 @@ function App() {
       </Route>
       <Route path="/signup">
         <Signup />
+      </Route>
+      <Route path="/login">
+        <Login />
       </Route>
       <Route path="/discover">
         <Navbar isLoaded={isLoaded} />
@@ -56,6 +60,10 @@ function App() {
       <Route path="/settings">
         <Navbar isLoaded={isLoaded} />
         <Settings />
+      </Route>
+      <Route path='/stream'>
+        <Navbar isLoaded={isLoaded} />
+        <Stream />
       </Route>
     </Switch>
   )

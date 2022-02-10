@@ -40,16 +40,16 @@ export function Login() {
 
   const userKeyUp = (e) => {
     // e.preventDefault();
-    if(userInput.value.length > 0) {
-      userCancelBtn.style.opacity = '100%'
-    }
+    userCancelBtn.style.opacity = '100%'
+    userInput.value.length && pwrdInput.value.length ? loginBtn.style.opacity = "100%" : loginBtn.style.opacity = "25%";
+
   }
 
   const pwrdKeyUp = (e) => {
     // e.preventDefault();
-    if(pwrdInput.value.length > 0) {
-      return pwrdCancelBtn.style.opacity = '100%'
-    }
+    pwrdCancelBtn.style.opacity = '100%'
+    userInput.value.length && pwrdInput.value.length ? loginBtn.style.opacity = "100%" : loginBtn.style.opacity = "25%";
+
   }
 
   const userFocus = (e) => {
@@ -90,8 +90,13 @@ export function Login() {
   }
 
   const pwrdBlur = (e) => {
-    pwrdCancelBtn.style.opacity='0%';
+    e.stopPropagation();
+    pwrdLabelDiv.style.backgroundImage = 'none';
+    pwrdLabelDiv.style.background = 'white';
+    pwrdLabel.style.color = 'black';
     pwrdInput.style.border = '1px solid black';
+    pwrdCancelBtn.style.marginTop = "-29px"
+    if(pwrdInput.value.length === 0) pwrdCancelBtn.style.opacity='0%';
   }
 
   const userClear = () => {
@@ -119,7 +124,7 @@ export function Login() {
 
   return (
     <>
-      <form className="lgn-login-container" onSubmit={handleSubmit}>
+      <form className="lgn-login-container" onSubmit={handleSubmit} action="/login" method="post">
         <h1 className="lgn-login-header">Login</h1>
         <ul className="lgn-login-error-list">
           {errors.map((error, idx) => (
@@ -128,7 +133,7 @@ export function Login() {
         </ul>
         <div className="lgn-input-container">
           <div className="lgn-user-input-box">
-            <div className="lgn-user-label-div">
+            <div className="lgn-user-label-div" onFocus={(e) => userFocus(e)}>
               <label className="lgn-user-label">Username or Email </label>
             </div>
             <input

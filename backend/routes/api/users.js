@@ -8,8 +8,8 @@ const { singleMulterUpload, singlePublicFileUpload, multipleMulterUpload, multip
 
 const router = express.Router();
 
-const validateSignup = [
-    check('email')
+const validateMusic = [
+    check('music')
       .exists({ checkFalsy: true })
       .isEmail()
       .withMessage('Please provide a valid email.')

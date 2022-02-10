@@ -4,29 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
-import styled from "styled-components";
 import { logout } from "../../store/session";
-
-const NavWrapper = styled.nav`
-  width: 100vw;
-  height: 10vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-
-`;
-const Searchbar = styled.div`
-  <div className="searchbar">
-    <div className="search-icon"></div>
-    <form className="searchbar-form" action="search" metho="post">
-        <input className="search-input" type="search" spellcheck="on" autocorrect="off" incremental onkeyup="searchBar()" placeholder="Search Fermata" name="q" minlength="3" max-length="255">
-        </input>
-    </form>
-  </div>
-  `;
-
-
 
 function Navbar({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -60,7 +38,7 @@ function Navbar({ isLoaded }){
               <div className="searchbar">
                 <div className="search-icon"></div>
                 <form className="searchbar-form" action="search" metho="post">
-                    <input className="search-input" type="search" spellcheck="on" autocorrect="off" incremental onkeyup="searchBar()" placeholder="Search Fermata" name="q" minlength="3" max-length="255" autocomplete='on'>
+                    <input className="search-input" type="search" spellCheck="on" autoCorrect="off" incremental="true" placeholder="Search Fermata" name="q" minlength="3" max-length="255" autocomplete='on'>
                     </input>
                 </form>
               </div>
@@ -94,7 +72,7 @@ function Navbar({ isLoaded }){
             <div className="searchbar">
               <div className="search-icon"></div>
               <form className="searchbar-form" action="search" metho="post">
-                  <input className="search-input" type="search" spellcheck="on" autocorrect="off" incremental onkeyup="searchBar()" placeholder="Search Fermata" name="q" minlength="3" max-length="255">
+                  <input className="search-input" type="search" spellCheck="on" autoCorrect="off" incremental="true" onKeyUp="searchBar()" placeholder="Search Fermata" name="q" minlength="3" max-length="255">
                   </input>
               </form>
             </div>

@@ -126,3 +126,16 @@ create app.js
     const app = express();
 
     app.use(morgan('dev'))
+
+npx sequelize model:generate --name User --attributes username:string,email:string,hashedPassword:string,artist:string
+npx sequelize model:generate --name Artist --attributes name:string,description:text,image_url:string,user_Id:integer,follower_cout:integer
+npx sequelize model:generate --name Track --attributes title:string,user_Id:integer,album_Id:integer,genre_Id:integer,image_url:string,url:string,description:text,duration:decimal,likes:integer
+npx sequelize model:generate --name Album --attributes title:string,user_Id:integer,genre_Id:integer,image_url:string,url:string,ratings:integer
+npx sequelize model:generate --name Genre --attributes title:string,description:text
+npx sequelize model:generate --name Review --attributes title:string,content:text,stars:integer,user_Id:integer,album_Id:integer
+npx sequelize model:generate --name Comment --attributes content:text,user_Id:integer,likes:integer
+npx sequelize model:generate --name Reply --attributes content:text,user_Id:integer,comment_Id:integer,likes:integer
+npx sequelize model:generate --name Subthread --attributes content:text,user_Id:integer,reply_Id:integer,likes:integer
+npx sequelize model:generate --name Like --attributes user_Id:integer,track_Id:integer,comment_Id:integer,reply_Id:integer,subthread_Id:integer
+npx sequelize model:generate --name Follow --attributes user_Id:integer
+npx sequelize model:generate --name Follower --attributes user_Id:integer,track_Id:integer,comment_Id:integer,reply_Id:integer,subthread_Id:integer

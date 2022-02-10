@@ -22,6 +22,9 @@ module.exports = {
         type: Sequelize.STRING.BINARY,
         allowNull: false
       },
+      artist: {
+        type: Sequelize.STRING.BINARY
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -34,7 +37,6 @@ module.exports = {
       }
     });
   },
-
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('Users');
   }

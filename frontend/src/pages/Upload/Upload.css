@@ -191,3 +191,22 @@
     font-size: 18px;
     color: black;
 }
+
+.terms-and-conditions {
+    height: 200px;
+    width: 600px;
+}
+
+.dragndrop-input {
+    widtH: 600px;
+    height: 400px;
+
+}
+
+.dragndrop-box {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    height: 600px;
+    background-color: purple;
+}
