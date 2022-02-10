@@ -57,7 +57,16 @@ h1.lgn-login-header {
     justify-content: space-around;
 }
 
-.lgn-input-box {
+.lgn-user-input-box {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 80px;
+    /* border: 1px solid black;
+    background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));; */
+}
+
+.lgn-pwrd-input-box {
     display: flex;
     flex-direction: column;
     width: 500px;
@@ -69,23 +78,27 @@ h1.lgn-login-header {
 .lgn-user-label-div {
     display: flex;
     flex-direction: column;
-    align-items: left;
-    width: 100px;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
     height: 20px;
     position: relative;
     margin-bottom: -10px;
     margin-left: 10px;
+    border-radius: 5px;
 }
 
 .lgn-pwrd-label-div {
     display: flex;
     flex-direction: column;
-    align-items: left;
-    width: 100px;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
     height: 20px;
     position: relative;
     margin-bottom: -10px;
     margin-left: 10px;
+    border-radius: 5px;
 }
 
 .lgn-user-label {
@@ -93,23 +106,25 @@ h1.lgn-login-header {
     font-weight: 700;
     font-style: normal;
     font-size: 16px;
-    color: black;
     background-color: white;
-    width: 110px;
+    color: black;
+    width: 120px;
     height: 20px;
     text-align: center;
+    margin-top: -5px;
 }
 
 .lgn-pwrd-label {
-    font-family: antarctican-headline;
+    font-family: antarctican-headline, sans-serif;
     font-weight: 700;
     font-style: normal;
     font-size: 16px;
-    color: black;
     background-color: white;
-    width: 55px;
+    color: black;
+    width: 70px;
     height: 20px;
     text-align: center;
+    margin-top: -5px;
 }
 
 .lgn-user-login-input {
@@ -226,7 +241,7 @@ select:-webkit-autofill:focus {
     margin-top: -30px;
 }
 
-.lgn-login-button {
+.lgn-login-btn {
     font-family: antarctican-headline;
     font-weight: 600;
     font-style: normal;
@@ -236,9 +251,18 @@ select:-webkit-autofill:focus {
     color: white;
     border: none;
     border-radius: 0.25em;
-    background-image: linear-gradient(rgba(200, 125, 255, 0.5), rgba(120, 60, 220, 0.5));
+    background-image: linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));
+    opacity: 50%;
 }
 
-.lgn-login-button:hover {
-    background-image: linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));
+.lgn-show-pwrd-btn {
+    background-image: url("../../../public/icons/eye.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    margin-left: 350px;
+    margin-top: 25px;
+    opacity: 25%;
 }
