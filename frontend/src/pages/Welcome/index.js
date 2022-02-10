@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
-console.log(sessionActions)
+import Login from "../Login";
 import { useDispatch } from "react-redux";
 import "./Welcome.css";
 import styled from "styled-components";

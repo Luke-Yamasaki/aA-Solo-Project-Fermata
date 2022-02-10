@@ -4,3 +4,164 @@ npm install react-router-dom@^5
 npm install redux
 npm install redux-thunk
 npm install -D redux-logger
+
+Antarctican Headline Thin
+
+font-family: antarctican-headline, sans-serif;
+
+font-weight: 100;
+
+font-style: normal;
+
+
+Antarctican Headline Extralight
+
+font-family: antarctican-headline, sans-serif;
+
+font-weight: 200;
+
+font-style: normal;
+
+
+Antarctican Headline Light
+
+font-family: antarctican-headline, sans-serif;
+
+font-weight: 300;
+
+font-style: normal;
+
+
+Antarctican Headline Book
+
+font-family: antarctican-headline, sans-serif;
+
+font-weight: 400;
+
+font-style: normal;
+
+
+Antarctican Headline Medium
+
+font-family: antarctican-headline, sans-serif;
+
+font-weight: 500;
+
+font-style: normal;
+
+
+Antarctican Headline Semibold
+
+font-family: antarctican-headline, sans-serif;
+
+font-weight: 600;
+
+font-style: normal;
+
+
+Antarctican Headline Bold
+
+font-family: antarctican-headline, sans-serif;
+
+font-weight: 700;
+
+font-style: normal;
+
+
+Antarctican Headline Black
+
+font-family: antarctican-headline, sans-serif;
+
+font-weight: 800;
+
+font-style: normal;
+
+
+Antarctican Headline Ultrabold
+
+font-family: antarctican-headline, sans-serif;
+
+font-weight: 800;
+
+font-style: normal;
+
+
+Antarctican Headline Ultrablack
+
+font-family: antarctican-headline, sans-serif;
+
+font-weight: 900;
+
+font-style: normal;
+
+
+Antarctican Mono Book
+
+font-family: antarctican-mono, sans-serif;
+
+font-weight: 400;
+
+font-style: normal;
+
+
+Antarctican Mono Book Italic
+
+font-family: antarctican-mono, sans-serif;
+
+font-weight: 400;
+
+font-style: italic;
+
+
+Antarctican Mono Medium
+
+font-family: antarctican-mono, sans-serif;
+
+font-weight: 500;
+
+font-style: normal;
+
+
+Antarctican Mono Medium Italic
+
+font-family: antarctican-mono, sans-serif;
+
+font-weight: 500;
+
+font-style: italic;
+
+
+Antarctican Mono Semibold
+
+font-family: antarctican-mono, sans-serif;
+
+font-weight: 600;
+
+font-style: normal;
+
+
+Antarctican Mono Semibold Italic
+
+font-family: antarctican-mono, sans-serif;
+
+font-weight: 600;
+
+font-style: italic;
+
+
+Antarctican Mono Bold
+
+font-family: antarctican-mono, sans-serif;
+
+font-weight: 700;
+
+font-style: normal;
+
+
+Antarctican Mono Bold Italic
+
+font-family: antarctican-mono, sans-serif;
+
+font-weight: 700;
+
+font-style: italic;

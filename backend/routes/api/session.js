@@ -30,7 +30,7 @@ router.post(
       const err = new Error('Login failed');
       err.status = 401;
       err.title = 'Login failed';
-      err.errors = ['The provided credentials were invalid.'];
+      err.errors = ['The username and/or password you specified are not correct.'];
       return next(err);
     }
 
