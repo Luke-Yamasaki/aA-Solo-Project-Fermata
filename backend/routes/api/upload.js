@@ -3,87 +3,76 @@ const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User } = require('../../db/models');
-const { singleMulterUpload, singlePublicFileUpload, multipleMulterUpload, multiplePublicFileUpload } = require("../../awsS3");
-const csrf = require('csurf');
-const csrfProtection = csrf({cookie: true});
+const { User, Track } = require('../../db/models');
+const { singleMulterUpload, singlePublicFileUpload } = require("../../awsS3");
 
 const router = express.Router();
 
-const { User, Answer, Comment, Like, genre } = require('../db/models');
-
-router.get('/', csrfProtection, asyncHandler(async(req, res) => {
-    if (!req.session.auth) {
-        res.redirect('/welcome');
-    }
-    const genres = await Genres.findAll()
-
-    res.render('uoload', {
-        title: "Ask a Question",
-        csrfToken: req.csrfToken(),
-        genres,
-    });
-}));
-
-router.post('/', csrfProtection, asyncHandler(async(req, res) => {
-    const {
-        name,
-        genreId,
-        content,
-    } = req.body
-
-    if (req.session.auth) {
-        const question = await Question.create({
-            name,
-            genreId,
-            userId: req.session.user.id,
-            content,
-        });
-
-        req.session.save(() => res.redirect(`/questions/${question.id}`));
-    };
-    req.session.save(() => res.redirect('/welcome'));
-}));
-
-router.get('/:id(\\d+)', asyncHandler(async(req, res) => {
-    const questionId = parseInt(req.params.id, 10);
-    const question = await Question.findOne({
-        include: User,
-        where: {
-            id: questionId
+const validateMusic = [
+    check('music')
+      .exists({ checkFalsy: true })
+      .custom((value, { req }) => {
+        const types = '^.*\.(?!wav$|mp3$)[^.]+$';
+        const file = req.file;
+        if (types.test(file.type.toString()) || types.test(file.name)) {
+            alert("file is valid");
+        } else{
+            alert("file is invalid");
         }
+        })
+      .withMessage('Only MP3 or WAV files are supported.'),
+    handleValidationErrors
+];
+
+router.post(
+  "/",
+  singleMulterUpload("music"),
+  validateMusic,
+  asyncHandler(async (req, res) => {
+    const user_Id = req.params.id;
+    const { title, image, description } = req.body;
+    const duration = req.file.duration;
+
+    const url = await singlePublicFileUpload(req.file);
+
+    const track = await Track.create({
+      title,
+      user_Id,
+      image,
+      url,
+      description,
+      duration
     });
 
-    const userId = req.session.auth.userId
+    setTokenCookie(res, track);
 
-    const answers = await Answer.findAll({
-        include: User
-      })
-
-    const comments = await Comment.findAll();
-
-    res.render('question-page', {
-        questionId,
-        question,
-        answers,
-        userId
+    return res.json({
+      track,
     });
+  })
+);
 
+router.put(
+  "/:id",
+  singleMulterUpload("music"),
+  asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const url = await singlePublicFileUpload(req.file);
+    await Track.update({ url }, { where: { id } });
 
-}));
+    res.json({ trackUrl });
+  })
+);
 
-router.post('/delete/:id(\\d+)', async(req, res) => {
-    const questionId = parseInt(req.params.id, 10);
+router.get(
+  "/",
+  asyncHandler(async (req, res) => {
+    // const id = req.params.id;
+    // const user = User.findOne({ where: { id }})
 
-    const answers = await Answer.findAll({
-        where: {
-            questionId
-        }
-    })
-    answers.forEach(answer => answer.destroy())
-    const question = await Question.findByPk(questionId);
-    await question.destroy();
-    res.redirect('/')
-})
+    // res.json(user);
+    res.json();
+  })
+);
 
 module.exports = router;

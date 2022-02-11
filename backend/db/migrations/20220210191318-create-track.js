@@ -17,17 +17,11 @@ module.exports = {
         allowNull: false,
         references: { model: "Users" }
       },
-      album_Id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: { model: "Albums" }
-      },
       genre_Id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         references: { model: "Genres" }
       },
-      image_url: {
+      image: {
         type: Sequelize.STRING
       },
       url: {
@@ -39,9 +33,6 @@ module.exports = {
       duration: {
         type: Sequelize.DECIMAL(10, 2),
         allowNull: false
-      },
-      likes: {
-        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

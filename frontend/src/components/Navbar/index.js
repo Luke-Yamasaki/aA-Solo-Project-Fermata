@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import LoginFormModal from '../LoginFormModal';
+// import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 import { logout } from "../../store/session";
 
@@ -15,7 +15,7 @@ function Navbar({ isLoaded }){
     if (sessionUser) {
       dispatch(logout());
     } else {
-      history.push("/welcome");
+      history.push("/login");
     }
   };
 
@@ -32,13 +32,10 @@ function Navbar({ isLoaded }){
               <Link className="home-txt" to='/discover'>Discover</Link>
             </li>
             <li>
-              <Link className="home-txt" to='/stream'>Stream</Link>
-            </li>
-            <li>
               <div className="searchbar">
                 <div className="search-icon"></div>
                 <form className="searchbar-form" action="search" metho="post">
-                    <input className="search-input" type="search" spellCheck="on" autoCorrect="off" incremental="true" placeholder="Search Fermata" name="q" minlength="3" max-length="255" autocomplete='on'>
+                    <input className="search-input" type="search" spellCheck="on" autoCorrect="off" incremental="true" placeholder="Search Fermata" name="q" minLength="3" maxLength="255" autoComplete='on'>
                     </input>
                 </form>
               </div>
@@ -48,6 +45,7 @@ function Navbar({ isLoaded }){
             </li>
             <li>
               <ProfileButton className="home-txt" user={sessionUser}/>
+              <div className="user-name-display">{sessionUser.username}</div>
             </li>
             <li>
               <Link className="home-txt" onClick={handleLogout} to='/welcome'>{sessionUser ? "Logout" : "Login"}</ Link>
@@ -64,9 +62,6 @@ function Navbar({ isLoaded }){
           </li>
           <li>
             <Link className="home-txt" to='/discover'>Discover</Link>
-          </li>
-          <li>
-            <Link className="home-txt" to='/stream'>Stream</Link>
           </li>
           <li clasName="home-item">
             <div className="searchbar">

@@ -4,7 +4,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
-const { singleMulterUpload, singlePublicFileUpload, multipleMulterUpload, multiplePublicFileUpload } = require("../../awsS3");
+const bcrypt = require('bcrypt');
 
 const router = express.Router();
 
@@ -57,16 +57,13 @@ const validateSignup = [
 
 router.post(
   "/",
-  singleMulterUpload("image"),
   validateSignup,
   asyncHandler(async (req, res) => {
     const { email, password, username } = req.body;
-    const profileImageUrl = await singlePublicFileUpload(req.file);
     const user = await User.signup({
       username,
       email,
-      password,
-      profileImageUrl,
+      password
     });
 
     setTokenCookie(res, user);
@@ -77,25 +74,31 @@ router.post(
   })
 );
 
-router.put(
-  "/:id",
-  singleMulterUpload("image"),
-  asyncHandler(async (req, res) => {
-    const id = req.params.id;
-    const profileImageUrl = await singlePublicFileUpload(req.file);
-    await User.update({ profileImageUrl }, { where: { id } });
+router.get('/demo', asyncHandler(async (req, res) => {
+    const username = "Demo-lition"
+    const emailAddress = "demo@user.io"
+    const password = "password"
+    const demoUser = await User.findOne({ where: { emailAddress } })
 
-    res.json({ profileImageUrl });
-  })
-);
+    if (demoUser === null) {
+        const hashedPassword = await bcrypt.hash(password, 10)
+        await User.signup({
+            username, emailAddress, hashedPassword
+        })
 
-router.get(
-  "/",
-  asyncHandler(async (req, res) => {
-    const users = await User.findAll();
+        const newUser = await User.findOne({ where: { emailAddress } })
 
-    res.json(users);
-  })
-);
+        req.session.user = newUser;
+        req.session.auth = {
+            user_Id: newUser.id,
+        };
+        return req.session.save(() => res.redirect('/'))
+    } else {
+        req.session.auth = {
+            user_Id: demoUser.id,
+        };
+        req.session.save(() => res.redirect('/'));
+    }
+}));
 
 module.exports = router;

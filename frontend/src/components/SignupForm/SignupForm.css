@@ -2,7 +2,7 @@ body {
     background: green;
 }
 
-.upl-login-container {
+.lgn-login-container {
     width: 570px;
     height: 800px;
     background-color: white;
@@ -14,17 +14,17 @@ body {
     padding-left: 30px;
 }
 
-.upl-login-error-list {
+.lgn-login-error-list {
     padding: 0px;
     margin: 0px;
 }
 
-h1.upl-login-header {
+h1.lgn-login-header {
     margin: 0px;
     padding: 0px;
 }
 
-.upl-login-error-item {
+.lgn-login-error-item {
     font-family: antarctican-headline;
     font-weight: 700;
     font-style: normal;
@@ -38,7 +38,7 @@ h1.upl-login-header {
     margin-bottom: 10px;
 }
 
-.upl-login-header {
+.lgn-login-header {
     font-family: antarctican-headline, sans-serif;
     font-weight: 700;
     font-style: normal;
@@ -48,7 +48,7 @@ h1.upl-login-header {
     height: 120px;
 }
 
-.upl-input-container {
+.lgn-input-container {
     display: flex;
     flex-direction: column;
     width: 500px;
@@ -57,7 +57,7 @@ h1.upl-login-header {
     justify-content: space-around;
 }
 
-.upl-music-input-box {
+.lgn-user-input-box {
     display: flex;
     flex-direction: column;
     width: 500px;
@@ -66,7 +66,7 @@ h1.upl-login-header {
     background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));; */
 }
 
-.upl-pwrd-input-box {
+.lgn-pwrd-input-box {
     display: flex;
     flex-direction: column;
     width: 500px;
@@ -75,7 +75,7 @@ h1.upl-login-header {
     background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));; */
 }
 
-.upl-music-label-div {
+.lgn-user-label-div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,7 +88,7 @@ h1.upl-login-header {
     border-radius: 5px;
 }
 
-.upl-pwrd-label-div {
+.lgn-pwrd-label-div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -101,7 +101,7 @@ h1.upl-login-header {
     border-radius: 5px;
 }
 
-.upl-user-label {
+.lgn-user-label {
     font-family: antarctican-headline, sans-serif;
     font-weight: 700;
     font-style: normal;
@@ -114,7 +114,7 @@ h1.upl-login-header {
     margin-top: -5px;
 }
 
-.upl-pwrd-label {
+.lgn-pwrd-label {
     font-family: antarctican-headline, sans-serif;
     font-weight: 700;
     font-style: normal;
@@ -127,7 +127,7 @@ h1.upl-login-header {
     margin-top: -5px;
 }
 
-.upl-user-login-input {
+.lgn-user-login-input {
     font-family: antarctican-headline;
     font-weight: 600;
     font-style: normal;
@@ -139,7 +139,7 @@ h1.upl-login-header {
 }
 
 
-.upl-pwrd-login-input {
+.lgn-pwrd-login-input {
     font-family: antarctican-headline;
     font-weight: 600;
     font-style: normal;
@@ -150,10 +150,10 @@ h1.upl-login-header {
     padding-right: -10px;
 }
 
-.upl-user-login-input:-webkit-autofill,
-.upl-user-login-input:-webkit-autofill:hover,
-.upl-user-login-input:-webkit-autofill:focus,
-.upl-user-login-input:-webkit-autofill:active,
+.lgn-user-login-input:-webkit-autofill,
+.lgn-user-login-input:-webkit-autofill:hover,
+.lgn-user-login-input:-webkit-autofill:focus,
+.lgn-user-login-input:-webkit-autofill:active,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
@@ -166,10 +166,10 @@ select:-webkit-autofill:focus {
     color: black;
     caret-color: white;}
 
-.upl-pwrd-login-input:-webkit-autofill,
-.upl-pwrd-login-input:-webkit-autofill:hover,
-.upl-pwrd-login-input:-webkit-autofill:focus,
-.upl-pwrd-login-input:-webkit-autofill:active,
+.lgn-pwrd-login-input:-webkit-autofill,
+.lgn-pwrd-login-input:-webkit-autofill:hover,
+.lgn-pwrd-login-input:-webkit-autofill:focus,
+.lgn-pwrd-login-input:-webkit-autofill:active,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
@@ -183,7 +183,7 @@ select:-webkit-autofill:focus {
     caret-color: white;
 }
 
-.upl-user-cancel-btn {
+.lgn-user-cancel-btn {
     background: none;
     border: none;
     background-image: url("../../../public/icons/cancel-btn.png");
@@ -198,7 +198,7 @@ select:-webkit-autofill:focus {
     opacity: 0%;
 }
 
-.upl-user-cancel-btn:hover {
+.lgn-user-cancel-btn:hover {
     background: none;
     border: none;
     background-image: url("../../../public/icons/cancel-btn.png");
@@ -212,7 +212,7 @@ select:-webkit-autofill:focus {
     margin-top: -30px;
 }
 
-.upl-pwrd-cancel-btn {
+.lgn-pwrd-cancel-btn {
     background: none;
     border: none;
     background-image: url("../../../public/icons/cancel-btn.png");
@@ -227,7 +227,7 @@ select:-webkit-autofill:focus {
     opacity: 0%;
 }
 
-.upl-pwrd-cancel-btn:hover {
+.lgn-pwrd-cancel-btn:hover {
     background: none;
     border: none;
     background-image: url("../../../public/icons/cancel-btn.png");
@@ -241,7 +241,7 @@ select:-webkit-autofill:focus {
     margin-top: -30px;
 }
 
-.upl-login-btn {
+.lgn-login-btn {
     font-family: antarctican-headline;
     font-weight: 600;
     font-style: normal;
@@ -255,7 +255,7 @@ select:-webkit-autofill:focus {
     opacity: 50%;
 }
 
-.upl-show-pwrd-btn {
+.lgn-show-pwrd-btn {
     background-image: url("../../../public/icons/eye.png");
     background-size: contain;
     background-repeat: no-repeat;

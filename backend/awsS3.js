@@ -1,6 +1,6 @@
 const AWS = require("aws-sdk");
 // name of your bucket here
-const fermata = "fermata";
+const NAME_OF_BUCKET = "fermata-music";
 
 const multer = require("multer");
 

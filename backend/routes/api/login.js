@@ -4,12 +4,29 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
-const { singleMulterUpload, singlePublicFileUpload } = require("../../awsS3");
-const { types } = require('pg');
 
 const router = express.Router();
 
-const validateUsername = [
+const validateSignup = [
+    check('email')
+      .exists({ checkFalsy: true })
+      .isEmail()
+      .withMessage('Please provide a valid email.')
+      .custom((value, { req }) => {
+        return new Promise((resolve, reject) => {
+          User.findOne({ where: { email: req.body.email } })
+            .then((res) => {
+              if (res) {
+                reject("Email already taken");
+              } else {
+                resolve();
+              }
+            })
+            .catch((err) => {
+              reject("Database error: ", err.message);
+            });
+        });
+      }),
     check('username')
       .exists({ checkFalsy: true })
       .isLength({ min: 4 })
@@ -30,59 +47,17 @@ const validateUsername = [
         });
       }),
     check('username').not().isEmail().withMessage('Username cannot be an email.'),
-    handleValidationErrors
-]
-
-const validateEmail = [
-    check('email')
+    check('password')
       .exists({ checkFalsy: true })
-      .isEmail()
-      .withMessage('Please provide a valid email.')
-      .custom((value, { req }) => {
-        return new Promise((resolve, reject) => {
-          User.findOne({ where: { email: req.body.email } })
-            .then((res) => {
-              if (res) {
-                reject("Email already taken");
-              } else {
-                resolve();
-              }
-            })
-            .catch((err) => {
-              reject("Database error: ", err.message);
-            });
-        });
-      }),
+      .isLength({ min: 6 })
+      .withMessage('Password must be 6 characters or more.'),
     handleValidationErrors
 ];
-
-const validatePassword = [
-    check('password')
-        .exists({ checkFalsy: true })
-        .isLength({ min: 6 })
-        .withMessage('Password must be 6 characters or more.'),
-    handleValidationErrors
-]
-
-const validateImage = [
-    check('image')
-        .custom((value, { req }) => {
-            types = '^.*\.(?!wav$|mp3$)[^.]+$';
-            const file = req.body.image;
-            if (types.test(file.type) || types.test(file.name)) {
-                alert("file is valid");
-            } else{
-                alert("file is invalid");
-            }
-          })
-          .withMessage('Only MP3 and WAV files are supported.'),
-    handleValidationErrors
-]
 
 router.post(
   "/",
   singleMulterUpload("image"),
-  validateImage,
+  validateSignup,
   asyncHandler(async (req, res) => {
     const { email, password, username } = req.body;
     const profileImageUrl = await singlePublicFileUpload(req.file);
@@ -116,7 +91,7 @@ router.put(
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    const user = await User.findAll();
+    const users = await User.findAll();
 
     res.json(users);
   })

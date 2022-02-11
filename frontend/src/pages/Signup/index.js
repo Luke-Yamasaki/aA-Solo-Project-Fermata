@@ -1,23 +1,15 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
-import Login from "../Login";
 import { useDispatch } from "react-redux";
-import "./Welcome.css";
-import styled from "styled-components";
+import "./Signup.css";
 
-const visible = styled.div`
-visibility: visible;
-`
-
-const hidden = styled.div`
-visibility: hidden;
-`
-
-export function Welcome() {
+export function Signup() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const [credentail, setCredential] = useState('');
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState('');
 
     if (sessionUser) return (
@@ -53,4 +45,4 @@ export function Welcome() {
     )
 }
 
-export default Welcome;
+export default Signup;
