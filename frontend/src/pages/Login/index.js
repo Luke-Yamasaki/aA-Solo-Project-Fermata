@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import LoginForm from "../../components/LoginForm";
 
 import "./Login.css";
 
@@ -27,8 +28,8 @@ export function Login() {
     }
 
     return (
-    <div className="wrapper">
-        <div className="form-wrapper">
+    <div className="lgn-wrapper">
+        <div className="lgn-form-wrapper">
             <div className="illustration-container">
                 <div className="glass-card">
                     <h1 className="form-header">Fermata</h1>
@@ -40,6 +41,10 @@ export function Login() {
                     </p>
                 </div>
             </div>
+            <div className="login-form-container">
+               <LoginForm />
+            </div>
+
         </div>
     </div>
     )

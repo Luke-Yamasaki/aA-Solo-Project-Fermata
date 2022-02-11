@@ -48,7 +48,7 @@ function Navbar({ isLoaded }){
               <div className="user-name-display">{sessionUser.username}</div>
             </li>
             <li>
-              <Link className="home-txt" onClick={handleLogout} to='/welcome'>{sessionUser ? "Logout" : "Login"}</ Link>
+              <Link className="home-txt" onClick={handleLogout} to='/login'>{sessionUser ? "Logout" : "Login"}</ Link>
             </li>
           </ul>
       </ nav>
@@ -63,11 +63,11 @@ function Navbar({ isLoaded }){
           <li>
             <Link className="home-txt" to='/discover'>Discover</Link>
           </li>
-          <li clasName="home-item">
+          <li className="home-item">
             <div className="searchbar">
               <div className="search-icon"></div>
               <form className="searchbar-form" action="search" metho="post">
-                  <input className="search-input" type="search" spellCheck="on" autoCorrect="off" incremental="true" onKeyUp="searchBar()" placeholder="Search Fermata" name="q" minlength="3" max-length="255">
+                  <input className="search-input" type="search" spellCheck="on" autoCorrect="off" incremental="true" placeholder="Search Fermata" name="q" minLength="3" maxLength="255">
                   </input>
               </form>
             </div>
@@ -76,7 +76,7 @@ function Navbar({ isLoaded }){
             <Link className="home-txt" to='/signup'>Sign up</Link>
           </li>
           <li>
-            <Link className="home-txt" onClick={handleLogout}>{sessionUser ? "Logout" : "Login"}</ Link>
+            <Link className="home-txt" onClick={handleLogout} to="/login">{sessionUser ? "Logout" : "Login"}</ Link>
           </li>
         </ul>
       </nav>

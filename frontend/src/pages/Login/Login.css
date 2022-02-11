@@ -1,0 +1,27 @@
+.lgn-wrapper {
+    background-image: linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.lgn-form-wrapper {
+    display: flex;
+    flex-direction: row;
+
+
+}
+
+.login-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    height: 900px;
+    background: white;
+    border-top-right-radius: 5rem;
+    border-bottom-right-radius: 5rem;
+}
