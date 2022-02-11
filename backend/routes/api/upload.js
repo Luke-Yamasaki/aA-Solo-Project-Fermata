@@ -4,7 +4,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User, Track } = require('../../db/models');
-const { singleMulterUpload, singlePublicFileUpload } = require("../../awsS3");
+const { singleMulterUpload, singlePublicFileUpload, multipleMulterUpload, multiplePublicFileUpload } = require("../../awsS3");
 
 const router = express.Router();
 
@@ -24,17 +24,37 @@ const validateMusic = [
     handleValidationErrors
 ];
 
+const validateImage = [
+  check('image')
+    .exists({ checkFalsy: true })
+    .custom((value, { req }) => {
+      const types = '^.*\.(?!jpg$|png$)[^.]+$';
+      const file = req.file;
+      if (types.test(file.type.toString()) || types.test(file.name)) {
+          alert("file is valid");
+      } else{
+          alert("file is invalid");
+      }
+      })
+    .withMessage('Only JPG or PNG files are supported.'),
+  handleValidationErrors
+];
+
 router.post(
   "/",
-  singleMulterUpload("music"),
-  validateMusic,
+  singleMulterUpload("image"),
+  // singleMulterUpload('music'),
+  // validateMusic,
+  // validateImage,
   asyncHandler(async (req, res) => {
+    console.log(req.file)
     const user_Id = req.params.id;
     const { title, image, description } = req.body;
     const duration = req.file.duration;
 
     const url = await singlePublicFileUpload(req.file);
-
+    // const urls = await multiplePublicFileUpload(req.files);
+    console.log('................', urls)
     const track = await Track.create({
       title,
       user_Id,

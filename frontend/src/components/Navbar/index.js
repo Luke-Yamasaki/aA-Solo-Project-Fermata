@@ -15,7 +15,7 @@ function Navbar({ isLoaded }){
     if (sessionUser) {
       dispatch(logout());
     } else {
-      history.push("/login");
+      history.push("/");
     }
   };
 

@@ -163,9 +163,42 @@ const Upload = () => {
 
   }
 
+  const dropHandler = (e) => {
+    console.log(e);
+    console.log('File(s) dropped');
+
+    // Prevent default behavior (Prevent file from being opened)
+
+    if (e.dataTransfer.items) {
+      // Use DataTransferItemList interface to access the file(s)
+      for (let i = 0; i < e.dataTransfer.items.length; i++) {
+        // If dropped items aren't files, reject them
+        if (e.dataTransfer.items[i].kind === 'file') {
+          let file = e.dataTransfer.items[i].getAsFile();
+          console.log('... file[' + i + '].name = ' + file.name);
+          console.log(file)
+        }
+      }
+    } else {
+      // Use DataTransfer interface to access the file(s)
+      for (let i = 0; i < e.dataTransfer.files.length; i++) {
+        console.log('... file[' + i + '].name = ' + e.dataTransfer.files[i].name);
+      }
+    }
+  }
+
+  const  dragOverHandler = (e) => {
+    console.log('File(s) in drop zone');
+
+    // Prevent default behavior (Prevent file from being opened)
+    e.preventDefault();
+  }
+
+
+
   return (
     <>
-      <form className="upl-login-container" onSubmit={handleSubmit}>
+      <form className="upl-upload-container" onSubmit={handleSubmit}>
         <h1 className="upl-login-header">Upload your track!</h1>
         <ul className="upl-login-error-list">
           {errors.map((error, idx) => (
@@ -173,27 +206,35 @@ const Upload = () => {
           ))}
         </ul>
         <div className="upl-input-container">
-          <div className="upl-music-input-box">
-            <div className="upl-music-label-div" >
-              <label className="upl-music-label">Choose an MP3 or WAV file</label>
-            </div>
-            <input
-                className="upl-music-input"
-                type="file"
-                onChange={updateMusic}
-                required
-              />
+          <div className="upl-music-label-div" >
+            <label className="upl-music-label">Choose an MP3 or WAV file</label>
           </div>
-          <div className="upl-image-input-box">
-            <div className="upl-image-label-div" >
-              <label className="upl-image-label">Choose a cover image</label>
+          <div className="upl-music-drop" onDrop={(e) => dropHandler(e)} onDragOver={(e) => dragOverHandler(e)}>
+            <p className="upl-dragndrop-title">Drag and drop your music here</p>
+            <div className="upl-music-file-div">
+              <p className="upl-music-text">or choose a file to upload</p>
+              <input
+                  className="upl-music-input"
+                  type="file"
+                  name="files"
+                  onChange={updateMusic}
+                />
             </div>
-            <input
-                className="upl-image-input"
-                type="file"
-                onChange={updateImage}
-                required
-              />
+          </div>
+          <div className="upl-music-label-div" >
+            <label className="upl-music-label">Choose a JPG or PNG file</label>
+          </div>
+          <div className="upl-music-drop" onDrop={(e) => dropHandler(e)} onDragOver={(e) => dragOverHandler(e)}>
+            <p className="upl-dragndrop-title">Drag and drop your image here</p>
+            <div className="upl-music-file-div">
+              <p className="upl-music-text">or choose a file to upload</p>
+              <input
+                  className="upl-music-input"
+                  type="file"
+                  name="files"
+                  onChange={updateImage}
+                />
+            </div>
           </div>
           <div className="upl-title-input-box">
             <div className="upl-title-label-div">
@@ -211,6 +252,7 @@ const Upload = () => {
               required
             />
             <div className="upl-title-cancel-btn" onClick={() => titleClear()}></div>
+
           </div>
           <div className="upl-description-input-box">
             <div className="upl-description-label-div">
@@ -233,18 +275,19 @@ const Upload = () => {
             <div className="upl-genre-label-div">
               <label className="upl-genre-label">Genre</label>
             </div>
-            <input
-              className="upl-title-input"
-              type="text"
-              placeholder="Enter a title for your track..."
-              autoComplete="off"
-              onChange={(e) => setTitle(e.target.value)}
-              onKeyUp={(e) => titleKeyUp(e)}
-              onFocus={(e) => titleFocus(e)}
-              onBlur={(e) => titleBlur(e)}
-              required
-            />
-            <div className="upl-description-cancel-btn" onClick={() => descriptionClear()}></div>
+            <select>
+              <option value=''>--Select an option--</option>
+              <option value='hip hop'>Hip Hop</option>
+              <option value='rap'>Rap</option>
+              <option value='reggaeton'>Reggaeton</option>
+              <option value='jazz'>Jazz</option>
+              <option value='sample'>Metal</option>
+              <option value='classical'>Classical</option>
+              <option value='experimental'>Experimental</option>
+              <option value='edm'>EDM</option>
+              <option value='techno'>Techno</option>
+              <option value='house'>House</option>
+            </select>
           </div>
         </div>
         <button className="upl-login-btn" type="submit">Upload</button>

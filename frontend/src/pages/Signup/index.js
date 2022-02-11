@@ -27,8 +27,8 @@ export function Signup() {
     }
 
     return (
-    <div className="wrapper">
-        <div className="form-wrapper">
+    <div className="lgn-wrapper">
+        <div className="lgn-form-wrapper">
             <div className="illustration-container">
                 <div className="glass-card">
                     <h1 className="form-header">Fermata</h1>
@@ -40,6 +40,10 @@ export function Signup() {
                     </p>
                 </div>
             </div>
+            <div className="login-form-container">
+               <LoginForm />
+            </div>
+
         </div>
     </div>
     )

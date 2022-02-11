@@ -9,6 +9,7 @@ const setTrack = (track) => ({
 
 export const upload = (track) => async (dispatch) => {
   const { music, image, title, id, image_url, url, description, duration, genre_Id } = track;
+  console.log(track)
   const formData = new FormData();
   formData.append("music", music);
   formData.append("title", title);
@@ -16,11 +17,14 @@ export const upload = (track) => async (dispatch) => {
   formData.append("url", url);
   formData.append("duration", duration);
 
+  if(image) {
+    formData.append("files", image);
+    formData.append("files", music)
+  }
+
   // for single file
   if (image) {
     formData.append("image", image);
-  } else if (image_url) {
-    formData.append("image_url", image_url);
   } else if (description) {
     formData.append("description", description);
   } else {

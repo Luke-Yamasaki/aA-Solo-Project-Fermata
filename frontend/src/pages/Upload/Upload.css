@@ -1,12 +1,16 @@
 body {
-    background: green;
+    background-image: linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));
+    font-family: antarctican-headline;
+    font-weight: 700px;
+    font-size: 16px;
 }
 
-.upl-login-container {
+.upl-upload-container {
     width: 570px;
     height: 800px;
-    background-color: white;
-    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.75);
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: left;
@@ -17,11 +21,6 @@ body {
 .upl-login-error-list {
     padding: 0px;
     margin: 0px;
-}
-
-h1.upl-login-header {
-    margin: 0px;
-    padding: 0px;
 }
 
 .upl-login-error-item {
@@ -42,37 +41,104 @@ h1.upl-login-header {
     font-family: antarctican-headline, sans-serif;
     font-weight: 700;
     font-style: normal;
-    font-size: 75px;
+    font-size: 48px;
     color: black;
-    width: 50px;
-    height: 120px;
+    width: 400px;
+    height: 80px;
 }
 
 .upl-input-container {
     display: flex;
     flex-direction: column;
     width: 500px;
-    height: 200px;
-    align-items: center;
+    height: 500px;
+    align-items: left;
     justify-content: space-around;
 }
 
-.upl-music-input-box {
+.upl-music-drop {
     display: flex;
     flex-direction: column;
-    width: 500px;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    color: black;
+    font-weight: 700;
+}
+
+.upl-dragndrop-title {
+    background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 18px;
+    margin-bottom: 0px;
+}
+
+.upl-music-file-div {
+    display: flex;
+    flex-direction: column;
+    width: 180px;
     height: 80px;
+}
+
+.upl-music-text {
+    width: 180px;
+    height: 20px;
+    text-align: left;
+}
+
+.upl-music-input {
+    width: 180px;
+    height: 30px;
+    font-family: antarctican-headline;
+    font-weight: 700;
+    font-size: 12px;
+    background: transparent;
+    background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgba(120, 100, 220, 1);
+    font-size: 12px;
+
+}
+
+/* .upl-music-input-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 200px;
+    margin-bottom: 20px;
+    background: grey;
+    border: 1px solid black;
+    background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));;
+} */
+
+.upl-image-input-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 200px;
+    margin-bottom: 20px;
+    background: grey;
     /* border: 1px solid black;
     background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));; */
 }
 
-.upl-pwrd-input-box {
+.upl-music-btn {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
-    width: 500px;
-    height: 80px;
-    /* border: 1px solid black;
-    background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));; */
+    width: 200px;
+    font-family: antarctican-headline;
+    font-weight: 700;
+
 }
 
 .upl-music-label-div {
@@ -88,7 +154,7 @@ h1.upl-login-header {
     border-radius: 5px;
 }
 
-.upl-pwrd-label-div {
+.upl-image-label-div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -101,11 +167,11 @@ h1.upl-login-header {
     border-radius: 5px;
 }
 
-.upl-user-label {
+.upl-music-label {
     font-family: antarctican-headline, sans-serif;
     font-weight: 700;
     font-style: normal;
-    font-size: 16px;
+    font-size: 12px;
     background-color: white;
     color: black;
     width: 120px;
@@ -114,20 +180,20 @@ h1.upl-login-header {
     margin-top: -5px;
 }
 
-.upl-pwrd-label {
+.upl-image-label {
     font-family: antarctican-headline, sans-serif;
     font-weight: 700;
     font-style: normal;
-    font-size: 16px;
+    font-size: 12px;
     background-color: white;
     color: black;
-    width: 70px;
+    width: 100px;
     height: 20px;
     text-align: center;
     margin-top: -5px;
 }
 
-.upl-user-login-input {
+.upl-music-login-input {
     font-family: antarctican-headline;
     font-weight: 600;
     font-style: normal;
@@ -139,7 +205,7 @@ h1.upl-login-header {
 }
 
 
-.upl-pwrd-login-input {
+.upl-image-login-input {
     font-family: antarctican-headline;
     font-weight: 600;
     font-style: normal;
