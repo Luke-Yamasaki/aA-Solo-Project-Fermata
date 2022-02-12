@@ -54,7 +54,7 @@ router.post(
 
     const url = await singlePublicFileUpload(req.file);
     // const urls = await multiplePublicFileUpload(req.files);
-    console.log('................', urls)
+    console.log('................', url)
     const track = await Track.create({
       title,
       user_Id,
@@ -80,7 +80,7 @@ router.put(
     const url = await singlePublicFileUpload(req.file);
     await Track.update({ url }, { where: { id } });
 
-    res.json({ trackUrl });
+    res.json({ url });
   })
 );
 

@@ -11,16 +11,16 @@ export const upload = (track) => async (dispatch) => {
   const { music, image, title, id, image_url, url, description, duration, genre_Id } = track;
   console.log(track)
   const formData = new FormData();
-  formData.append("music", music);
+  // formData.append("music", music);
   formData.append("title", title);
   formData.append("user_Id", id);
   formData.append("url", url);
   formData.append("duration", duration);
 
-  if(image) {
-    formData.append("files", image);
-    formData.append("files", music)
-  }
+  // if(image) {
+  //   formData.append("files", image);
+  //   formData.append("files", music)
+  // }
 
   // for single file
   if (image) {
