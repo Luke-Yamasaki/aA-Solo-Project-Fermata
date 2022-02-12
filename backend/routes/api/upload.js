@@ -87,11 +87,9 @@ router.put(
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    // const id = req.params.id;
-    // const user = User.findOne({ where: { id }})
+    const tracks = await Track.findAll();
 
-    // res.json(user);
-    res.json();
+    res.json(tracks);
   })
 );
 

@@ -2,7 +2,7 @@ body {
     background: green;
 }
 
-.lgn-login-container {
+.sgn-login-container {
     width: 570px;
     height: 800px;
     background-color: white;
@@ -14,17 +14,17 @@ body {
     padding-left: 30px;
 }
 
-.lgn-login-error-list {
+.sgn-login-error-list {
     padding: 0px;
     margin: 0px;
 }
 
-h1.lgn-login-header {
+h1.sgn-login-header {
     margin: 0px;
     padding: 0px;
 }
 
-.lgn-login-error-item {
+.sgn-login-error-item {
     font-family: antarctican-headline;
     font-weight: 700;
     font-style: normal;
@@ -38,7 +38,7 @@ h1.lgn-login-header {
     margin-bottom: 10px;
 }
 
-.lgn-login-header {
+.sgn-login-header {
     font-family: antarctican-headline, sans-serif;
     font-weight: 700;
     font-style: normal;
@@ -48,7 +48,7 @@ h1.lgn-login-header {
     height: 120px;
 }
 
-.lgn-input-container {
+.sgn-input-container {
     display: flex;
     flex-direction: column;
     width: 500px;
@@ -57,7 +57,7 @@ h1.lgn-login-header {
     justify-content: space-around;
 }
 
-.lgn-user-input-box {
+.sgn-user-input-box {
     display: flex;
     flex-direction: column;
     width: 500px;
@@ -66,7 +66,7 @@ h1.lgn-login-header {
     background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));; */
 }
 
-.lgn-pwrd-input-box {
+.sgn-pwrd-input-box {
     display: flex;
     flex-direction: column;
     width: 500px;
@@ -75,7 +75,7 @@ h1.lgn-login-header {
     background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));; */
 }
 
-.lgn-user-label-div {
+.sgn-user-label-div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,7 +88,7 @@ h1.lgn-login-header {
     border-radius: 5px;
 }
 
-.lgn-pwrd-label-div {
+.sgn-pwrd-label-div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -101,7 +101,7 @@ h1.lgn-login-header {
     border-radius: 5px;
 }
 
-.lgn-user-label {
+.sgn-user-label {
     font-family: antarctican-headline, sans-serif;
     font-weight: 700;
     font-style: normal;
@@ -114,7 +114,7 @@ h1.lgn-login-header {
     margin-top: -5px;
 }
 
-.lgn-pwrd-label {
+.sgn-pwrd-label {
     font-family: antarctican-headline, sans-serif;
     font-weight: 700;
     font-style: normal;
@@ -127,7 +127,7 @@ h1.lgn-login-header {
     margin-top: -5px;
 }
 
-.lgn-user-login-input {
+.sgn-user-login-input {
     font-family: antarctican-headline;
     font-weight: 600;
     font-style: normal;
@@ -139,7 +139,7 @@ h1.lgn-login-header {
 }
 
 
-.lgn-pwrd-login-input {
+.sgn-pwrd-login-input {
     font-family: antarctican-headline;
     font-weight: 600;
     font-style: normal;
@@ -150,10 +150,10 @@ h1.lgn-login-header {
     padding-right: -10px;
 }
 
-.lgn-user-login-input:-webkit-autofill,
-.lgn-user-login-input:-webkit-autofill:hover,
-.lgn-user-login-input:-webkit-autofill:focus,
-.lgn-user-login-input:-webkit-autofill:active,
+.sgn-user-login-input:-webkit-autofill,
+.sgn-user-login-input:-webkit-autofill:hover,
+.sgn-user-login-input:-webkit-autofill:focus,
+.sgn-user-login-input:-webkit-autofill:active,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
@@ -166,10 +166,10 @@ select:-webkit-autofill:focus {
     color: black;
     caret-color: white;}
 
-.lgn-pwrd-login-input:-webkit-autofill,
-.lgn-pwrd-login-input:-webkit-autofill:hover,
-.lgn-pwrd-login-input:-webkit-autofill:focus,
-.lgn-pwrd-login-input:-webkit-autofill:active,
+.sgn-pwrd-login-input:-webkit-autofill,
+.sgn-pwrd-login-input:-webkit-autofill:hover,
+.sgn-pwrd-login-input:-webkit-autofill:focus,
+.sgn-pwrd-login-input:-webkit-autofill:active,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
@@ -183,10 +183,10 @@ select:-webkit-autofill:focus {
     caret-color: white;
 }
 
-.lgn-user-cancel-btn {
+.sgn-user-cancel-btn {
     background: none;
     border: none;
-    background-image: url("../../../public/icons/cancel-btn.png");
+    background-image: url("../../../../public/icons/cancel-btn.png");
     background-size: contain;
     background-repeat: no-repeat;
     width: 12px;
@@ -198,10 +198,10 @@ select:-webkit-autofill:focus {
     opacity: 0%;
 }
 
-.lgn-user-cancel-btn:hover {
+.sgn-user-cancel-btn:hover {
     background: none;
     border: none;
-    background-image: url("../../../public/icons/cancel-btn.png");
+    background-image: url("../../../../public/icons/cancel-btn.png");
     background-size: contain;
     background-repeat: no-repeat;
     width: 15px;
@@ -212,10 +212,10 @@ select:-webkit-autofill:focus {
     margin-top: -30px;
 }
 
-.lgn-pwrd-cancel-btn {
+.sgn-pwrd-cancel-btn {
     background: none;
     border: none;
-    background-image: url("../../../public/icons/cancel-btn.png");
+    background-image: url("../../../../public/icons/cancel-btn.png");
     background-size: contain;
     background-repeat: no-repeat;
     width: 12px;
@@ -227,10 +227,10 @@ select:-webkit-autofill:focus {
     opacity: 0%;
 }
 
-.lgn-pwrd-cancel-btn:hover {
+.sgn-pwrd-cancel-btn:hover {
     background: none;
     border: none;
-    background-image: url("../../../public/icons/cancel-btn.png");
+    background-image: url("../../../../public/icons/cancel-btn.png");
     background-size: contain;
     background-repeat: no-repeat;
     width: 15px;
@@ -241,7 +241,7 @@ select:-webkit-autofill:focus {
     margin-top: -30px;
 }
 
-.lgn-login-btn {
+.sgn-login-btn {
     font-family: antarctican-headline;
     font-weight: 600;
     font-style: normal;
@@ -255,8 +255,8 @@ select:-webkit-autofill:focus {
     opacity: 50%;
 }
 
-.lgn-show-pwrd-btn {
-    background-image: url("../../../public/icons/eye.png");
+.sgn-show-pwrd-btn {
+    background-image: url("../../../../public/icons/eye.png");
     background-size: contain;
     background-repeat: no-repeat;
     width: 20px;

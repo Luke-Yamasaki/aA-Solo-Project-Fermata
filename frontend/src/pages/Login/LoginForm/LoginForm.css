@@ -185,61 +185,47 @@ select:-webkit-autofill:focus {
 }
 
 .lgn-user-cancel-btn {
-    background: none;
     border: none;
-    background-image: url("../../../public/icons/cancel-btn.png");
+    background: none;
+    background-image: url("../../../../public/icons/cancel-btn.png");
     background-size: contain;
     background-repeat: no-repeat;
     width: 12px;
     height: 12px;
     filter: invert(0.5);
-    position: abosulte;
-    margin-left: 385px;
+    margin-left: 360px;
     margin-top: -29px;
     opacity: 0%;
 }
 
 .lgn-user-cancel-btn:hover {
-    background: none;
-    border: none;
-    background-image: url("../../../public/icons/cancel-btn.png");
-    background-size: contain;
-    background-repeat: no-repeat;
     width: 15px;
     height: 15px;
     filter: invert(1);
-    position: abosulte;
-    margin-left: 384px;
+    margin-left: 359px;
     margin-top: -30px;
 }
 
 .lgn-pwrd-cancel-btn {
     background: none;
     border: none;
-    background-image: url("../../../public/icons/cancel-btn.png");
+    background-image: url("../../../../public/icons/cancel-btn.png");
     background-size: contain;
     background-repeat: no-repeat;
     width: 12px;
     height: 12px;
     filter: invert(0.5);
-    position: abosulte;
-    margin-left: 385px;
+    margin-left: 360px;
     margin-top: -29px;
     opacity: 0%;
 }
 
 .lgn-pwrd-cancel-btn:hover {
-    background: none;
-    border: none;
-    background-image: url("../../../public/icons/cancel-btn.png");
-    background-size: contain;
-    background-repeat: no-repeat;
     width: 15px;
     height: 15px;
     filter: invert(1);
-    position: abosulte;
-    margin-left: 384px;
-    margin-top: -30px;
+    margin-left: 359px;
+    margin-top: -32px;
 }
 
 .lgn-login-btn {
@@ -257,13 +243,22 @@ select:-webkit-autofill:focus {
 }
 
 .lgn-show-pwrd-btn {
-    background-image: url("../../../public/icons/eye.png");
+    background: none;
+    border: none;
+    background-image: url("../../../../public/icons/eye.png");
     background-size: contain;
     background-repeat: no-repeat;
     width: 20px;
     height: 20px;
-    position: absolute;
-    margin-left: 350px;
-    margin-top: 25px;
+    margin-left: 330px;
+    margin-top: -15px;
     opacity: 25%;
+}
+
+.lgn-show-pwrd-btn:hover {
+    width: 23px;
+    height: 23px;
+    margin-left: 328px;
+    margin-top: 17px;
+    opacity: 50%;
 }

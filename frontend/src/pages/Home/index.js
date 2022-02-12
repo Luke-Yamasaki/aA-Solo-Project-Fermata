@@ -1,6 +1,5 @@
 import "./Home.css";
 import Navbar from "../../components/Navbar";
-import styled from "styled-components";
 
 export default function Home() {
   return (

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
+import SignupForm from "./SignupForm";
+
 import "./Signup.css";
 
 export function Signup() {
@@ -19,7 +22,7 @@ export function Signup() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        return dispatch(sessionActions.login({ credential, password }))
+        return dispatch(sessionActions.signup({ username, email, password }))
             .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
@@ -41,7 +44,7 @@ export function Signup() {
                 </div>
             </div>
             <div className="login-form-container">
-               <LoginForm />
+               <SignupForm />
             </div>
 
         </div>

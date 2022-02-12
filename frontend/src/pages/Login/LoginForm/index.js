@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import * as sessionActions from "../../store/session";
+import * as sessionActions from "../../../store/session";
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import "./LoginForm.css";
@@ -16,7 +16,9 @@ export function LoginForm() {
   const pwrdCancelBtn = document.getElementsByClassName('lgn-pwrd-cancel-btn')[0];
   const userInput = document.getElementsByClassName('lgn-user-login-input')[0];
   const pwrdInput = document.getElementsByClassName('lgn-pwrd-login-input')[0];
+
   const userLabelDiv = document.getElementsByClassName('lgn-user-label-div')[0];
+
   const pwrdLabelDiv = document.getElementsByClassName('lgn-pwrd-label-div')[0];
   const userLabel = document.getElementsByClassName('lgn-user-label')[0];
   const pwrdLabel = document.getElementsByClassName('lgn-pwrd-label')[0];
@@ -39,84 +41,133 @@ export function LoginForm() {
   };
 
   const userKeyUp = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     userCancelBtn.style.opacity = '100%'
     userInput.value.length && pwrdInput.value.length ? loginBtn.style.opacity = "100%" : loginBtn.style.opacity = "25%";
-
-  }
-
-  const pwrdKeyUp = (e) => {
-    // e.preventDefault();
-    pwrdCancelBtn.style.opacity = '100%'
-    userInput.value.length && pwrdInput.value.length ? loginBtn.style.opacity = "100%" : loginBtn.style.opacity = "25%";
-
   }
 
   const userFocus = (e) => {
-    userLabelDiv.style.backgroundImage = 'linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1))';
+    e.preventDefault();
+
+    const userLabelDiv = document.getElementsByClassName('lgn-user-label-div')[0];
+    const userLabel = document.getElementsByClassName('lgn-user-label')[0];
+    const userCancelBtn = document.getElementsByClassName('lgn-user-cancel-btn')[0];
+    const userInput = document.getElementsByClassName('lgn-user-login-input')[0];
+
+    userLabelDiv.style.background = 'linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1))';
     userLabelDiv.style.width = '130px';
+    userLabelDiv.style.border = "2px solid black"
     userLabel.style.color = "white";
     userLabel.style.letterSpacing = "0.5px";
-    userCancelBtn.style.marginTop = "-32px"
     userLabel.style.backgroundColor = "rgba(255, 255, 255, 0)";
-    userInput.style.border = '5px solid rgba(200, 125, 255, 1)'
-    userInput.style.height = "40px"
-    if(userInput.value.length > 0) userCancelBtn.style.opacity = '100%'
+    userInput.style.border = '5px solid rgba(200, 125, 255, 1)';
+    userInput.style.height = "40px";
+    userCancelBtn.style.marginTop = "-32px";
     return
   }
 
+  const pwrdKeyUp = (e) => {
+      e.preventDefault();
+      pwrdCancelBtn.style.opacity = '100%'
+      userInput.value.length && pwrdInput.value.length ? loginBtn.style.opacity = "100%" : loginBtn.style.opacity = "25%";
+
+  }
+
   const pwrdFocus = (e) => {
+    e.preventDefault();
+
+    const pwrdLabelDiv = document.getElementsByClassName('lgn-pwrd-label-div')[0];
+    const pwrdLabel = document.getElementsByClassName('lgn-pwrd-label')[0];
+    const pwrdCancelBtn = document.getElementsByClassName('lgn-pwrd-cancel-btn')[0];
+    const pwrdInput = document.getElementsByClassName('lgn-pwrd-login-input')[0];
+    const eye = document.getElementsByClassName('lgn-show-pwrd-btn')[0];
+
     pwrdLabelDiv.style.backgroundImage = 'linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1))';
-    pwrdLabelDiv.style.width = '130px';
+    pwrdLabelDiv.style.width = '75px';
+    pwrdLabelDiv.style.border = "2px solid black";
     pwrdLabel.style.color = "white";
     pwrdLabel.style.letterSpacing = "0.5px";
     pwrdLabel.style.backgroundColor = "rgba(255, 255, 255, 0)";
     pwrdInput.style.border = '5px solid rgba(200, 125, 255, 1)'
     pwrdInput.style.height = "40px"
-    if(pwrdInput.value.length > 0) {
-      pwrdCancelBtn.style.opacity = '100%'
-    }
+    pwrdCancelBtn.style.marginTop = "-32px";
+    eye.style.marginTop = "-16px";
     return
   }
 
   const userBlur = (e) => {
-    e.stopPropagation();
-    userLabelDiv.style.backgroundImage = 'none';
+    e.preventDefault();
+    const userLabelDiv = document.getElementsByClassName('lgn-user-label-div')[0];
+    const userLabel = document.getElementsByClassName('lgn-user-label')[0];
+    const userCancelBtn = document.getElementsByClassName('lgn-user-cancel-btn')[0];
+    const userInput = document.getElementsByClassName('lgn-user-login-input')[0];
     userLabelDiv.style.background = 'white';
-    userLabel.style.color = 'black';
+    userLabelDiv.style.border = 'none';
+    userLabelDiv.style.width = '120px';
+    userLabel.style.color = "black";
+    userLabel.style.letterSpacing = "0px";
+    userLabel.style.backgroundColor = "white";
     userInput.style.border = '1px solid black';
-    userCancelBtn.style.marginTop = "-29px"
+    userInput.style.borderRadius = '2px';
+    userInput.style.height = "40px";
+    userCancelBtn.style.marginTop = "-28px";
     if(userInput.value.length === 0) userCancelBtn.style.opacity='0%';
   }
 
   const pwrdBlur = (e) => {
-    e.stopPropagation();
-    pwrdLabelDiv.style.backgroundImage = 'none';
+    e.preventDefault();
+    const pwrdLabelDiv = document.getElementsByClassName('lgn-pwrd-label-div')[0];
+    const pwrdLabel = document.getElementsByClassName('lgn-pwrd-label')[0];
+    const pwrdCancelBtn = document.getElementsByClassName('lgn-pwrd-cancel-btn')[0];
+    const pwrdInput = document.getElementsByClassName('lgn-pwrd-login-input')[0];
+    const eye = document.getElementsByClassName('lgn-show-pwrd-btn')[0];
+
     pwrdLabelDiv.style.background = 'white';
-    pwrdLabel.style.color = 'black';
+    pwrdLabelDiv.style.border = 'none';
+    pwrdLabelDiv.style.width = '75px';
+    pwrdLabel.style.color = "black";
+    pwrdLabel.style.letterSpacing = "0px";
+    pwrdLabel.style.backgroundColor = "white";
     pwrdInput.style.border = '1px solid black';
-    pwrdCancelBtn.style.marginTop = "-29px"
+    pwrdInput.style.borderRadius = '2px';
+    pwrdInput.style.height = "40px";
+    pwrdCancelBtn.style.marginTop = "-28px";
+    eye.style.opacity = "25%";
+    eye.style.marginTop= "-15px";
     if(pwrdInput.value.length === 0) pwrdCancelBtn.style.opacity='0%';
   }
 
-  const userClear = () => {
-    setCredential('');
-    return userCancelBtn.style.opacity = '0%';
+  const userClear = (e) => {
+    e.preventDefault();
+    if(credential) {
+      setCredential('');
+      userCancelBtn.style.opacity = '0%';
+      userBlur(e);
+    } else {
+      userCancelBtn.style.opacity = '100%';
+    }
   }
 
-  const pwrdClear = () => {
-    setPassword('');
-    return pwrdCancelBtn.style.opacity = '0%';
+  const pwrdClear = (e) => {
+    e.preventDefault();
+    if(password) {
+      setPassword('');
+      pwrdCancelBtn.style.opacity = '0%';
+      pwrdBlur(e);
+    } else {
+      pwrdCancelBtn.style.opacity = '100%';
+    }
   }
 
-  const visible = () => {
+  const visible = (e) => {
+    e.preventDefault();
     if(!showPassword){
       setShowPassword(true);
       eye.style.opacity = "100%";
       pwrdInput.type = "text";
     } else {
       setShowPassword(false);
-      eye.style.opacity = "50%";
+      eye.style.opacity = "25%";
       pwrdInput.type = "password";
     }
     return
@@ -132,8 +183,8 @@ export function LoginForm() {
           ))}
         </ul>
         <div className="lgn-input-container">
-          <div className="lgn-user-input-box">
-            <div className="lgn-user-label-div" onFocus={(e) => userFocus(e)}>
+          <div className="lgn-user-input-box" onFocus={(e) => userFocus(e)}>
+            <div className="lgn-user-label-div">
               <label className="lgn-user-label">Username or Email </label>
             </div>
             <input
@@ -144,13 +195,12 @@ export function LoginForm() {
                 autoComplete="username"
                 onChange={(e) => setCredential(e.target.value)}
                 onKeyUp={(e) => userKeyUp(e)}
-                onFocus={(e) => userFocus(e)}
                 onBlur={(e) => userBlur(e)}
                 required
               />
-            <div className="lgn-user-cancel-btn" onClick={() => userClear()}></div>
+            <button className="lgn-user-cancel-btn" onClick={(e) => userClear(e)}></button>
           </div>
-          <div className="lgn-pwrd-input-box">
+          <div className="lgn-pwrd-input-box" onFocus={(e) => pwrdFocus(e)}>
             <div className="lgn-pwrd-label-div">
               <label className="lgn-pwrd-label">Password</label>
             </div>
@@ -162,12 +212,11 @@ export function LoginForm() {
               autoComplete="current-password"
               onChange={(e) => setPassword(e.target.value)}
               onKeyUp={(e) => pwrdKeyUp(e)}
-              onFocus={(e) => pwrdFocus(e)}
               onBlur={(e) => pwrdBlur(e)}
               required
             />
-            <div className="lgn-pwrd-cancel-btn" onClick={() => pwrdClear()}></div>
-            <div className="lgn-show-pwrd-btn" onClick={() => visible()}></div>
+            <button className="lgn-pwrd-cancel-btn" onClick={(e) => pwrdClear(e)}></button>
+            <button className="lgn-show-pwrd-btn" onClick={(e) => visible(e)}></button>
           </div>
         </div>
         <button className="lgn-login-btn" type="submit">Log In</button>
