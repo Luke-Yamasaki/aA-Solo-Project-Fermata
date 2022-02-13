@@ -1,37 +1,20 @@
 import React, { useState } from "react";
-import * as sessionActions from "../../store/session";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import SignupForm from "./SignupForm";
 
 import "./Signup.css";
 
 export function Signup() {
-    const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [errors, setErrors] = useState('');
 
     if (sessionUser) return (
         <Redirect to="/" />
     );
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setErrors([]);
-        return dispatch(sessionActions.signup({ username, email, password }))
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
-        });
-    }
-
     return (
-    <div className="lgn-wrapper">
-        <div className="lgn-form-wrapper">
+    <div className="sgn-wrapper">
+        <div className="sgn-form-wrapper">
             <div className="illustration-container">
                 <div className="glass-card">
                     <h1 className="form-header">Fermata</h1>
@@ -39,11 +22,11 @@ export function Signup() {
                     <p className="form-p">As the world's largest music and audio platform, SoundCloud lets people discover and enjoy the greatest selection of music from the most diverse creator community on earth. Since launching in 2008, the platform has become renowned for its unique content and features, including the ability to share music and connect directly with artists, as well as unearth breakthrough tracks, raw demos, podcasts and more. </p>
                     <div className="cc0"></div>
                     <p className="form-q">Don't have an account?
-                        <a className="sign-up"href="/signup">Sign up</a>
+                        <a className="sign-up"href="/login">Login</a>
                     </p>
                 </div>
             </div>
-            <div className="login-form-container">
+            <div className="signup-form-container">
                <SignupForm />
             </div>
 

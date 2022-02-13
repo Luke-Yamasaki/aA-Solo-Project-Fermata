@@ -1,30 +1,27 @@
-body {
-    background: green;
-}
-
-.sgn-login-container {
-    width: 570px;
-    height: 800px;
+.sgn-signup-container {
+    width: 550px;
+    height: 640px;
     background-color: white;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: left;
+    justify-content: space-between;
     align-items: left;
     padding-left: 30px;
+    margin-left: 65px;
 }
 
-.sgn-login-error-list {
+.sgn-signup-error-list {
     padding: 0px;
     margin: 0px;
 }
 
-h1.sgn-login-header {
+h1.sgn-signup-header {
     margin: 0px;
     padding: 0px;
 }
 
-.sgn-login-error-item {
+.sgn-signup-error-item {
     font-family: antarctican-headline;
     font-weight: 700;
     font-style: normal;
@@ -38,7 +35,7 @@ h1.sgn-login-header {
     margin-bottom: 10px;
 }
 
-.sgn-login-header {
+.sgn-signup-header {
     font-family: antarctican-headline, sans-serif;
     font-weight: 700;
     font-style: normal;
@@ -52,12 +49,21 @@ h1.sgn-login-header {
     display: flex;
     flex-direction: column;
     width: 500px;
-    height: 200px;
-    align-items: center;
+    height: 400px;
+    align-items: left;
     justify-content: space-around;
 }
 
 .sgn-user-input-box {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 80px;
+    /* border: 1px solid black;
+    background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));; */
+}
+
+.sgn-email-input-box {
     display: flex;
     flex-direction: column;
     width: 500px;
@@ -75,12 +81,35 @@ h1.sgn-login-header {
     background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));; */
 }
 
+
+.sgn-confirm-pwrd-input-box {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 80px;
+    /* border: 1px solid black;
+    background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));; */
+}
+
 .sgn-user-label-div {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 120px;
+    width: 75px;
+    height: 20px;
+    position: relative;
+    margin-bottom: -10px;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.sgn-email-label-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
     height: 20px;
     position: relative;
     margin-bottom: -10px;
@@ -93,7 +122,20 @@ h1.sgn-login-header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 70px;
+    width: 75px;
+    height: 20px;
+    position: relative;
+    margin-bottom: -10px;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.sgn-confirm-pwrd-label-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
     height: 20px;
     position: relative;
     margin-bottom: -10px;
@@ -108,7 +150,20 @@ h1.sgn-login-header {
     font-size: 16px;
     background-color: white;
     color: black;
-    width: 120px;
+    width: 75px;
+    height: 20px;
+    text-align: center;
+    margin-top: -5px;
+}
+
+.sgn-email-label {
+    font-family: antarctican-headline, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 16px;
+    background-color: white;
+    color: black;
+    width: 50px;
     height: 20px;
     text-align: center;
     margin-top: -5px;
@@ -121,39 +176,73 @@ h1.sgn-login-header {
     font-size: 16px;
     background-color: white;
     color: black;
-    width: 70px;
+    width: 75px;
     height: 20px;
     text-align: center;
     margin-top: -5px;
 }
 
-.sgn-user-login-input {
+.sgn-confirm-pwrd-label {
+    font-family: antarctican-headline, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 16px;
+    background-color: white;
+    color: black;
+    width: 125px;
+    height: 20px;
+    text-align: center;
+    margin-top: -5px;
+}
+
+.sgn-user-signup-input {
     font-family: antarctican-headline;
     font-weight: 600;
     font-style: normal;
     font-size: 14px;
-    width: 400px;
+    width: 375px;
     height: 40px;
     padding-left: 10px;
     padding-right: -10px;
 }
 
-
-.sgn-pwrd-login-input {
+.sgn-email-signup-input {
     font-family: antarctican-headline;
     font-weight: 600;
     font-style: normal;
     font-size: 14px;
-    width: 400px;
+    width: 375px;
     height: 40px;
     padding-left: 10px;
     padding-right: -10px;
 }
 
-.sgn-user-login-input:-webkit-autofill,
-.sgn-user-login-input:-webkit-autofill:hover,
-.sgn-user-login-input:-webkit-autofill:focus,
-.sgn-user-login-input:-webkit-autofill:active,
+.sgn-pwrd-signup-input {
+    font-family: antarctican-headline;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 14px;
+    width: 375px;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: -10px;
+}
+
+.sgn-confirm-pwrd-signup-input {
+    font-family: antarctican-headline;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 14px;
+    width: 375px;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: -10px;
+}
+
+.sgn-user-signup-input:-webkit-autofill,
+.sgn-user-signup-input:-webkit-autofill:hover,
+.sgn-user-signup-input:-webkit-autofill:focus,
+.sgn-user-signup-input:-webkit-autofill:active,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
@@ -164,12 +253,47 @@ select:-webkit-autofill:focus {
     font-style: normal;
     font-size: 14px;
     color: black;
-    caret-color: white;}
+    caret-color: white;
+}
 
-.sgn-pwrd-login-input:-webkit-autofill,
-.sgn-pwrd-login-input:-webkit-autofill:hover,
-.sgn-pwrd-login-input:-webkit-autofill:focus,
-.sgn-pwrd-login-input:-webkit-autofill:active,
+.sgn-email-signup-input:-webkit-autofill,
+.sgn-email-signup-input:-webkit-autofill:hover,
+.sgn-email-signup-input:-webkit-autofill:focus,
+.sgn-email-signup-input:-webkit-autofill:active,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-text-fill-color: black !important;
+    -webkit-font-family: antarctican-headline, sans-serif;
+    -webkit-font-weight: 700;
+    font-style: normal;
+    font-size: 14px;
+    color: black;
+    caret-color: white;
+}
+
+.sgn-pwrd-signup-input:-webkit-autofill,
+.sgn-pwrd-signup-input:-webkit-autofill:hover,
+.sgn-pwrd-signup-input:-webkit-autofill:focus,
+.sgn-pwrd-signup-input:-webkit-autofill:active,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-text-fill-color: black !important;
+    -webkit-font-family: antarctican-headline, sans-serif;
+    -webkit-font-weight: 700;
+    font-style: normal;
+    font-size: 14px;
+    color: black;
+    caret-color: white;
+}
+
+.sgn-confirm-pwrd-signup-input:-webkit-autofill,
+.sgn-confirm-pwrd-signup-input:-webkit-autofill:hover,
+.sgn-confirm-pwrd-signup-input:-webkit-autofill:focus,
+.sgn-confirm-pwrd-signup-input:-webkit-autofill:active,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
@@ -184,31 +308,46 @@ select:-webkit-autofill:focus {
 }
 
 .sgn-user-cancel-btn {
-    background: none;
     border: none;
+    background: none;
     background-image: url("../../../../public/icons/cancel-btn.png");
     background-size: contain;
     background-repeat: no-repeat;
     width: 12px;
     height: 12px;
     filter: invert(0.5);
-    position: abosulte;
-    margin-left: 385px;
+    margin-left: 360px;
     margin-top: -29px;
     opacity: 0%;
 }
 
 .sgn-user-cancel-btn:hover {
-    background: none;
-    border: none;
-    background-image: url("../../../../public/icons/cancel-btn.png");
-    background-size: contain;
-    background-repeat: no-repeat;
     width: 15px;
     height: 15px;
     filter: invert(1);
-    position: abosulte;
-    margin-left: 384px;
+    margin-left: 359px;
+    margin-top: -30px;
+}
+
+.sgn-email-cancel-btn {
+    border: none;
+    background: none;
+    background-image: url("../../../../public/icons/cancel-btn.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 12px;
+    height: 12px;
+    filter: invert(0.5);
+    margin-left: 360px;
+    margin-top: -29px;
+    opacity: 0%;
+}
+
+.sgn-email-cancel-btn:hover {
+    width: 15px;
+    height: 15px;
+    filter: invert(1);
+    margin-left: 359px;
     margin-top: -30px;
 }
 
@@ -221,48 +360,142 @@ select:-webkit-autofill:focus {
     width: 12px;
     height: 12px;
     filter: invert(0.5);
-    position: abosulte;
-    margin-left: 385px;
+    margin-left: 360px;
     margin-top: -29px;
     opacity: 0%;
 }
 
 .sgn-pwrd-cancel-btn:hover {
+    width: 15px;
+    height: 15px;
+    filter: invert(1);
+    margin-left: 359px;
+    margin-top: -32px;
+}
+
+.sgn-confirm-pwrd-cancel-btn {
     background: none;
     border: none;
     background-image: url("../../../../public/icons/cancel-btn.png");
     background-size: contain;
     background-repeat: no-repeat;
+    width: 12px;
+    height: 12px;
+    filter: invert(0.5);
+    margin-left: 360px;
+    margin-top: -29px;
+    opacity: 0%;
+}
+
+.sgn-confirm-pwrd-cancel-btn:hover {
     width: 15px;
     height: 15px;
     filter: invert(1);
-    position: abosulte;
-    margin-left: 384px;
-    margin-top: -30px;
+    margin-left: 359px;
+    margin-top: -32px;
 }
 
-.sgn-login-btn {
+.sgn-signup-btn {
     font-family: antarctican-headline;
     font-weight: 600;
     font-style: normal;
     font-size: 18px;
-    width: 400px;
+    width: 390px;
     height: 35px;
+    margin-top: 20px;
     color: white;
     border: none;
     border-radius: 0.25em;
     background-image: linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));
+    opacity: 35%;
+}
+
+.sgn-signup-btn:hover {
     opacity: 50%;
 }
 
 .sgn-show-pwrd-btn {
+    background: none;
+    border: none;
     background-image: url("../../../../public/icons/eye.png");
     background-size: contain;
     background-repeat: no-repeat;
     width: 20px;
     height: 20px;
-    position: absolute;
-    margin-left: 350px;
-    margin-top: 25px;
+    margin-left: 330px;
+    margin-top: -15px;
     opacity: 25%;
+}
+
+.sgn-show-pwrd-btn:hover {
+    width: 23px;
+    height: 23px;
+    margin-left: 328px;
+    margin-top: -17px;
+    opacity: 50%;
+}
+
+.sgn-show-confirm-pwrd-btn {
+    background: none;
+    border: none;
+    background-image: url("../../../../public/icons/eye.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    margin-left: 330px;
+    margin-top: -15px;
+    opacity: 25%;
+}
+
+.sgn-show-confirm-pwrd-btn:hover {
+    width: 23px;
+    height: 23px;
+    margin-left: 328px;
+    margin-top: -17px;
+    opacity: 50%;
+}
+
+.sgn-username-error {
+    list-style: none;
+    list-style-type: none;
+    font-weight: 700;
+    background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 450px;
+    height: 30px;
+}
+
+.sgn-email-error {
+    list-style: none;
+    list-style-type: none;
+    font-weight: 700;
+    background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 450px;
+    height: 30px;
+}
+
+.sgn-pwrd-error {
+    list-style: none;
+    list-style-type: none;
+    font-weight: 700;
+    background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 450px;
+    height: 30px;
+}
+
+.sgn-confirm-pwrd-error {
+    list-style: none;
+    list-style-type: none;
+    font-weight: 700;
+    background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 450px;
+    height: 30px;
 }

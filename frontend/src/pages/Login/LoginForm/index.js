@@ -17,11 +17,6 @@ export function LoginForm() {
   const userInput = document.getElementsByClassName('lgn-user-login-input')[0];
   const pwrdInput = document.getElementsByClassName('lgn-pwrd-login-input')[0];
 
-  const userLabelDiv = document.getElementsByClassName('lgn-user-label-div')[0];
-
-  const pwrdLabelDiv = document.getElementsByClassName('lgn-pwrd-label-div')[0];
-  const userLabel = document.getElementsByClassName('lgn-user-label')[0];
-  const pwrdLabel = document.getElementsByClassName('lgn-pwrd-label')[0];
   const loginBtn = document.getElementsByClassName('lgn-login-btn')[0];
   const eye = document.getElementsByClassName('lgn-show-pwrd-btn')[0];
 
@@ -175,7 +170,7 @@ export function LoginForm() {
 
   return (
     <>
-      <form className="lgn-login-container" onSubmit={handleSubmit} action="/login" method="post">
+      <form className="lgn-login-container" onSubmit={handleSubmit}>
         <h1 className="lgn-login-header">Login</h1>
         <ul className="lgn-login-error-list">
           {errors.map((error, idx) => (

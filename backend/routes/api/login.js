@@ -7,65 +7,25 @@ const { User } = require('../../db/models');
 
 const router = express.Router();
 
-const validateSignup = [
-    check('email')
-      .exists({ checkFalsy: true })
-      .isEmail()
-      .withMessage('Please provide a valid email.')
-      .custom((value, { req }) => {
-        return new Promise((resolve, reject) => {
-          User.findOne({ where: { email: req.body.email } })
-            .then((res) => {
-              if (res) {
-                reject("Email already taken");
-              } else {
-                resolve();
-              }
-            })
-            .catch((err) => {
-              reject("Database error: ", err.message);
-            });
-        });
-      }),
-    check('username')
-      .exists({ checkFalsy: true })
-      .isLength({ min: 4 })
-      .withMessage('Please provide a username with at least 4 characters.')
-      .custom((value, { req }) => {
-        return new Promise((resolve, reject) => {
-          User.findOne({ where: { username: req.body.username } })
-            .then((res) => {
-              if (res) {
-                reject("Username already taken");
-              } else {
-                resolve();
-              }
-            })
-            .catch((err) => {
-              reject("Database error: ", err.message);
-            });
-        });
-      }),
-    check('username').not().isEmail().withMessage('Username cannot be an email.'),
-    check('password')
-      .exists({ checkFalsy: true })
-      .isLength({ min: 6 })
-      .withMessage('Password must be 6 characters or more.'),
-    handleValidationErrors
+const validateLogin = [
+  check("credential")
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage("Please provide a valid email or username."),
+  check("password")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a password."),
+  handleValidationErrors,
 ];
 
 router.post(
   "/",
-  singleMulterUpload("image"),
-  validateSignup,
+  validateLogin,
   asyncHandler(async (req, res) => {
-    const { email, password, username } = req.body;
-    const profileImageUrl = await singlePublicFileUpload(req.file);
-    const user = await User.signup({
-      username,
-      email,
+    const { credential, password } = req.body;
+    const user = await User.login({
+      credential,
       password,
-      profileImageUrl,
     });
 
     setTokenCookie(res, user);
@@ -76,25 +36,31 @@ router.post(
   })
 );
 
-router.put(
-  "/:id",
-  singleMulterUpload("image"),
-  asyncHandler(async (req, res) => {
-    const id = req.params.id;
-    const profileImageUrl = await singlePublicFileUpload(req.file);
-    await User.update({ profileImageUrl }, { where: { id } });
+router.get('/demo', asyncHandler(async (req, res) => {
+  const username = "Demo-lition"
+  const emailAddress = "demo@user.io"
+  const password = "password"
+  const demoUser = await User.findOne({ where: { emailAddress } })
 
-    res.json({ profileImageUrl });
-  })
-);
+  if (demoUser === null) {
+      const hashedPassword = await bcrypt.hash(password, 10)
+      await User.signup({
+          username, emailAddress, hashedPassword
+      })
 
-router.get(
-  "/",
-  asyncHandler(async (req, res) => {
-    const users = await User.findAll();
+      const newUser = await User.findOne({ where: { emailAddress } })
 
-    res.json(users);
-  })
-);
+      req.session.user = newUser;
+      req.session.auth = {
+          user_Id: newUser.id,
+      };
+      return req.session.save(() => res.redirect('/'))
+  } else {
+      req.session.auth = {
+          user_Id: demoUser.id,
+      };
+      req.session.save(() => res.redirect('/'));
+  }
+}));
 
 module.exports = router;
