@@ -1,0 +1,101 @@
+.plyr-container {
+    width: 100vw;
+    height: 75px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+}
+
+.plyr-play-btn {
+    background-image: url("../../../public/icons/play-btn.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+}
+
+.plyr-stop-btn {
+    background-image: url("../../../public/icons/play-btn.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    opacity: 0%;
+}
+
+.plyr-playback-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 450px;
+    height: 75px;
+}
+
+.plyr-current-duration {
+    width: 45px;
+    height: 30px;
+    background: white;
+    color: black;
+}
+
+.plyr-progress-bar {
+    width: 300px;
+    height: 15px;
+    background-color: purple;
+    border-radius: 1rem;
+}
+
+.plyr-total-duration {
+    width: 45px;
+    height: 30px;
+    background: white;
+    color: black;
+}
+
+.plyr-slider-container {
+    width: 45px;
+    height: 45px;
+    background-image: url("../../../public/icons/speaker-icon.png");
+}
+
+.plyr-volume-slider {
+
+}
+
+.plyr-track-box {
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+    height: 75px;
+}
+
+.plyr-track-image {
+    width: 75px;
+    height: 75px;
+}
+
+.plyr-track-info {
+    display: flex;
+    flex-direction: column;
+    width: 125px;
+    height: 75px;
+}
+
+.plyr-track-artist {
+    width: 125px;
+    height: 20px;
+    color: black;
+    font-family: antarctic-headline;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.plyr-track-title {
+    width: 125px;
+    height: 20px;
+    color: black;
+    font-family: antarctic-headline;
+    font-weight: 700;
+    font-size: 12px;
+}
