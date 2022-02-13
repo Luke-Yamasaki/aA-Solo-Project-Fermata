@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { upload } from "../../store/upload";
+import { upload } from "../../store/track";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import "./Upload.css";

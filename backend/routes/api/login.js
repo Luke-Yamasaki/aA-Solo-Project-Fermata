@@ -44,9 +44,8 @@ router.post(
 
 router.get('/demo', asyncHandler(async (req, res) => {
   const username = "Demo-lition"
-  const emailAddress = "demo@user.io"
   const password = "password"
-  const demoUser = await User.findOne({ where: { emailAddress } })
+  const demoUser = await User.findOne({ where: { username } })
 
   if (demoUser === null) {
       const hashedPassword = await bcrypt.hash(password, 10)

@@ -29,3 +29,5 @@ export function Player ({ track }) {
         </div>
     )
 }
+
+export default Player;

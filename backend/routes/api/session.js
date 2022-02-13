@@ -54,6 +54,7 @@ router.get(
   '/',
   restoreUser,
   (req, res) => {
+    // console.log(req)
     const { user } = req;
     if (user) {
       return res.json({

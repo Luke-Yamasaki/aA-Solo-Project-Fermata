@@ -29,11 +29,11 @@ const validateImage = [
     .exists({ checkFalsy: true })
     .custom((value, { req }) => {
       const types = '^.*\.(?!jpg$|png$)[^.]+$';
-      const file = req.file;
-      if (types.test(file.type.toString()) || types.test(file.name)) {
-          alert("file is valid");
+      const image = req.image;
+      if (types.test(image.type.toString()) || types.test(image.name)) {
+          alert("image is valid");
       } else{
-          alert("file is invalid");
+          alert("imge is invalid");
       }
       })
     .withMessage('Only JPG or PNG files are supported.'),
@@ -42,18 +42,13 @@ const validateImage = [
 
 router.post(
   "/",
-  // validateMusic,
-  // validateImage,
+  validateMusic,
+  validateImage,
   singleMulterUpload("music"),
-  // singleMulterUpload("image"),
-  // singleMulterUpload('music'),
-  // validateMusic,
-  // validateImage,
   asyncHandler(async (req, res) => {
     console.log(req)
     const user_Id = req.params.id;
     const { title, image, description } = req.body;
-    const duration = req.file.duration;
 
     const url = await singlePublicFileUpload(req.file);
     // const urls = await multiplePublicFileUpload(req.files);
@@ -63,8 +58,7 @@ router.post(
       user_Id,
       image,
       url,
-      description,
-      duration
+      description
     });
 
     setTokenCookie(res, track);

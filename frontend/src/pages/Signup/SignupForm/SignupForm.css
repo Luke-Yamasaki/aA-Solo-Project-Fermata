@@ -400,7 +400,7 @@ select:-webkit-autofill:focus {
     font-weight: 600;
     font-style: normal;
     font-size: 18px;
-    width: 390px;
+    width: 300px;
     height: 35px;
     margin-top: 20px;
     color: white;
@@ -498,4 +498,32 @@ select:-webkit-autofill:focus {
     -webkit-text-fill-color: transparent;
     width: 450px;
     height: 30px;
+}
+
+
+.sgn-demo-btn {
+    font-family: antarctican-headline;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 18px;
+    width: 75px;
+    height: 35px;
+    margin-top: 20px;
+    color: white;
+    border: none;
+    border-radius: 0.25em;
+    background-image: linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));
+    opacity: 35%;
+}
+
+.sgn-demo-btn:hover {
+    opacity: 100%;
+}
+
+.sgn-signup-demo-container {
+    display: flex;
+    flex-direction: row;
+    width: 400px;
+    justify-content: space-between;
+    ;
 }

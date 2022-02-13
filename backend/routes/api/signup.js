@@ -16,7 +16,6 @@ const validateSignup = [
       return new Promise((resolve, reject) => {
         User.findOne({ where: { email: req.body.email } })
           .then((res) => {
-            console.log("res.....", res);
             if (res) {
               reject("Email already taken");
             } else {
@@ -48,6 +47,7 @@ const validateSignup = [
     }),
   check("username").not().isEmail().withMessage("Username cannot be an email."),
   check("password")
+    .exists({ checkFalsy: true })
     .isLength({ min: 6 })
     .withMessage("Password must be 6 characters or more."),
   handleValidationErrors
@@ -57,7 +57,8 @@ router.post(
   "/",
   validateSignup,
   asyncHandler(async (req, res) => {
-    const { username, email, password } = req.body;
+    console.log(req.body)
+    const { username, email, password, confirmPassword } = req.body;
     const user = await User.signup({
       username,
       email,

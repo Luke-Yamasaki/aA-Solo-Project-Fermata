@@ -10,7 +10,7 @@ export function SignupForm() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -59,15 +59,30 @@ export function SignupForm() {
               emailErrors.push(error)
             } else if(error.toLowerCase().includes("password")) {
               pwrdErrors.push(error)
-            } else return
+            } else if(error.toLowerCase().includes('match')) {
+              confirmPwrdErrors.push(error)
+            }
           })
         }
         setUsernameErrors(usernameErrors);
         setEmailErrors(emailErrors);
         setPwrdErrors(pwrdErrors);
+        setConfirmPwrdErrors(confirmPwrdErrors)
       }
     );
   };
+
+  const handleDemoUser = (e) => {
+    const credential = "Demo-lition";
+    const password = "password";
+    e.preventDefault();
+    return dispatch(sessionActions.login({ credential, password})).catch(
+      async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setUsernameErrors(data.errors);
+      }
+    );
+  }
 
   const userKeyUp = (e) => {
     e.preventDefault();
@@ -441,7 +456,10 @@ export function SignupForm() {
             <button className="sgn-show-confirm-pwrd-btn" onClick={(e) => confirmPwrdVisible(e)}></button>
           </div>
         </div>
-        <button className="sgn-signup-btn" type="submit">Sign up</button>
+        <div className="sgn-signup-demo-container">
+          <button className="sgn-signup-btn" type="submit">Sign up</button>
+          <button className="sgn-demo-btn" type="button" onClick={(e) => handleDemoUser(e)}>Demo</button>
+        </div>
       </form>
     </>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../../store/session";
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import "./LoginForm.css";
 
@@ -34,6 +34,18 @@ export function LoginForm() {
       }
     );
   };
+
+  const handleDemoUser = (e) => {
+    const credential = "Demo-lition";
+    const password = "password";
+    e.preventDefault();
+    return dispatch(sessionActions.login({ credential, password})).catch(
+      async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      }
+    );
+  }
 
   const userKeyUp = (e) => {
     e.preventDefault();
@@ -214,7 +226,10 @@ export function LoginForm() {
             <button className="lgn-show-pwrd-btn" onClick={(e) => visible(e)}></button>
           </div>
         </div>
-        <button className="lgn-login-btn" type="submit">Log In</button>
+        <div className="lgn-login-demo-container">
+          <button className="lgn-login-btn" type="submit">Log In</button>
+          <button className="lgn-demo-btn" type="button" onClick={(e) => handleDemoUser(e)}>Demo</button>
+        </div>
       </form>
     </>
   );

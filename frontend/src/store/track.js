@@ -1,15 +1,30 @@
 import { csrfFetch } from "../store/csrf";
 
 const SET_TRACK = "upload/setTrack";
+const REMOVE_TRACK = "upload/removeTrack"
+const READ_TRACK = "upload/readTrack"
+const UPDATE_TRACK = "upload/updateTrack"
 
 const setTrack = (track) => ({
   type: SET_TRACK,
   payload: track,
 });
 
+const removeTrack = (track) => async(dispatch) => {
+  const res = await csrfFetch(`/api/tracks/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: formData,
+  });
+
+  const data = await res.json();
+  dispatch(setTrack(data.track));
+}
+
 export const upload = (track) => async (dispatch) => {
-  const { music, image, title, id, image_url, url, description, duration, genre_Id } = track;
-  console.log(track)
+  const { title, id, url, description, duration, genre_Id } = track;
   const formData = new FormData();
   // formData.append("music", music);
   formData.append("title", title);
@@ -33,8 +48,7 @@ export const upload = (track) => async (dispatch) => {
     }
   }
 
-
-  const res = await csrfFetch(`/api/upload/`, {
+  const res = await csrfFetch(`/api/tracks/`, {
     method: "POST",
     headers: {
       "Content-Type": "multipart/form-data",

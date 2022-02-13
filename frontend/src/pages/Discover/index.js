@@ -1,6 +1,6 @@
 import "./Discover.css";
 
-export default function Discover () {
+export function Discover () {
     return(
     <div className="dsc-wrapper">
         <div className="dsc-container">
@@ -39,7 +39,8 @@ export default function Discover () {
                 <animate attributeType="hueRotate" values="360" dur="10s" repeatCount="indefinite" />
             </circle>
         </svg>
-
   </div>
   )
 }
+
+export default Discover;
