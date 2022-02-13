@@ -38,17 +38,19 @@ export function SignupForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(e.target[4].value !== e.target[7].value) {
-      setConfirmPwrdErrors("Passwords do not match.")
+      return setConfirmPwrdErrors("Passwords do not match.")
     }
     setUsernameErrors([]);
     setEmailErrors([]);
     setPwrdErrors([]);
-    return dispatch(sessionActions.signup({ username, email, password })).catch(
+    return dispatch(sessionActions.signup({ username, email, password, confirmPassword })).catch(
       async (res) => {
         const data = await res.json();
         let usernameErrors = [];
         let emailErrors = [];
         let pwrdErrors = [];
+        let confirmPwrdErrors = [];
+
         if (data && data.errors) {
           data.errors.map((error) => {
             if(error.toLowerCase().includes("username")) {

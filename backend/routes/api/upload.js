@@ -4,7 +4,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User, Track } = require('../../db/models');
-const { singleMulterUpload, singlePublicFileUpload, multipleMulterUpload, multiplePublicFileUpload } = require("../../awsS3");
+const { singleMulterUpload, singlePublicFileUpload } = require("../../awsS3");
 
 const router = express.Router();
 
@@ -42,12 +42,15 @@ const validateImage = [
 
 router.post(
   "/",
-  singleMulterUpload("image"),
+  // validateMusic,
+  // validateImage,
+  singleMulterUpload("music"),
+  // singleMulterUpload("image"),
   // singleMulterUpload('music'),
   // validateMusic,
   // validateImage,
   asyncHandler(async (req, res) => {
-    console.log(req.file)
+    console.log(req)
     const user_Id = req.params.id;
     const { title, image, description } = req.body;
     const duration = req.file.duration;
