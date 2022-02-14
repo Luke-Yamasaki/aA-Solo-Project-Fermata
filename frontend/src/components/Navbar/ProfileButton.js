@@ -31,15 +31,13 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button className="user-button" onClick={openMenu}>
+      <button className="prf-user-button" onClick={openMenu}>
       </button>
       {showMenu && (
-        <ul className="profile-dropdown">
-          <li className="profile-items">{user.username}</li>
-          <li className="profile-items">{user.email}</li>
-          <li className="profile-items">
-            <button className="logout" onClick={logout}>Log Out</button>
-          </li>
+        <ul className="prf-profile-dropdown">
+          <li className="prf-profile-items">Username:<p className="prf-item-text">{user.username}</p></li>
+          <li className="prf-profile-items">Email:<p className="prf-item-text">{user.email}</p></li>
+          <li className="prf-profile-items">Settings:<a href={`/users/${user.id}`} className="prf-settings-link">Change</a></li>
         </ul>
       )}
     </>

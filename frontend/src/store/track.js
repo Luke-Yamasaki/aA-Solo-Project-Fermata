@@ -16,7 +16,7 @@ const removeTrack = (track) => async(dispatch) => {
     headers: {
       "Content-Type": "multipart/form-data",
     },
-    body: formData,
+    body: track,
   });
 
   const data = await res.json();
@@ -24,13 +24,11 @@ const removeTrack = (track) => async(dispatch) => {
 }
 
 export const upload = (track) => async (dispatch) => {
-  const { title, id, url, description, duration, genre_Id } = track;
+  const  { music, image, title, userId, description } = track;
   const formData = new FormData();
-  // formData.append("music", music);
+  formData.append("music", music);
   formData.append("title", title);
-  formData.append("user_Id", id);
-  formData.append("url", url);
-  formData.append("duration", duration);
+  formData.append("userId", userId);
 
   // if(image) {
   //   formData.append("files", image);
@@ -42,11 +40,7 @@ export const upload = (track) => async (dispatch) => {
     formData.append("image", image);
   } else if (description) {
     formData.append("description", description);
-  } else {
-    if (genre_Id) {
-    formData.append("genre_Id", genre_Id)
-    }
-  }
+  } 
 
   const res = await csrfFetch(`/api/tracks/`, {
     method: "POST",

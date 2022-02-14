@@ -1,103 +1,76 @@
 import React, { useState } from "react";
 import * as userActions from "../../../store/user";
-import * as sessionActions from "../../../store/session";
-import { Redirect } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import "./SignupForm.css";
+import "./SettingsForm.css"
 
-export function SignupForm() {
+export function SettingsForm({sessionUser}) {
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [image, setImage] = useState(null);
+
 
   const [usernameErrors, setUsernameErrors] = useState([]);
   const [emailErrors, setEmailErrors] = useState([]);
   const [pwrdErrors, setPwrdErrors] = useState([]);
   const [confirmPwrdErrors, setConfirmPwrdErrors] = useState([]);
+  const [imageErrors, setImageErrors] = useState([]);
 
-  const userCancelBtn = document.getElementsByClassName('sgn-user-cancel-btn')[0];
-  const emailCancelBtn = document.getElementsByClassName('sgn-email-cancel-btn')[0];
-  const pwrdCancelBtn = document.getElementsByClassName('sgn-pwrd-cancel-btn')[0];
-  const confirmPwrdCancelBtn = document.getElementsByClassName('sgn-confirm-pwrd-cancel-btn')[0];
+  const userCancelBtn = document.getElementsByClassName('set-user-cancel-btn')[0];
+  const emailCancelBtn = document.getElementsByClassName('set-email-cancel-btn')[0];
+  const pwrdCancelBtn = document.getElementsByClassName('set-pwrd-cancel-btn')[0];
+  const confirmPwrdCancelBtn = document.getElementsByClassName('set-confirm-pwrd-cancel-btn')[0];
 
-  const userInput = document.getElementsByClassName('sgn-user-signup-input')[0];
-  const emailInput = document.getElementsByClassName('sgn-email-signup-input')[0];
-  const pwrdInput = document.getElementsByClassName('sgn-pwrd-signup-input')[0];
-  const confirmPwrdInput = document.getElementsByClassName('sgn-confirm-pwrd-signup-input')[0];
+  const userInput = document.getElementsByClassName('set-user-signup-input')[0];
+  const emailInput = document.getElementsByClassName('set-email-signup-input')[0];
+  const pwrdInput = document.getElementsByClassName('set-pwrd-signup-input')[0];
+  const confirmPwrdInput = document.getElementsByClassName('set-confirm-pwrd-signup-input')[0];
 
-  const signupBtn = document.getElementsByClassName('sgn-signup-btn')[0];
+  const saveBtn = document.getElementsByClassName('set-save-btn')[0];
 
-  if(sessionUser) return (
+  if(!sessionUser) return (
     <Redirect to="/" />
   );
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+    // e.preventDefault();
     if(e.target[4].value !== e.target[7].value) {
       return setConfirmPwrdErrors("Passwords do not match.")
     }
     setUsernameErrors([]);
     setEmailErrors([]);
     setPwrdErrors([]);
-    return dispatch(userActions.signup({ username, email, password, confirmPassword })).catch(
-      async (res) => {
-        const data = await res.json();
-        let usernameErrors = [];
-        let emailErrors = [];
-        let pwrdErrors = [];
-        let confirmPwrdErrors = [];
 
-        if (data && data.errors) {
-          data.errors.map((error) => {
-            if(error.toLowerCase().includes("username")) {
-              usernameErrors.push(error)
-            } else if(error.toLowerCase().includes("email")) {
-              emailErrors.push(error)
-            } else if(error.toLowerCase().includes("password")) {
-              pwrdErrors.push(error)
-            } else if(error.toLowerCase().includes('match')) {
-              confirmPwrdErrors.push(error)
-            }
-          })
-        }
-        setUsernameErrors(usernameErrors);
-        setEmailErrors(emailErrors);
-        setPwrdErrors(pwrdErrors);
-        setConfirmPwrdErrors(confirmPwrdErrors)
-      }
-    );
+    const id = sessionUser.id;
+
+    return dispatch(userActions.update({id, username, email, password, confirmPassword}));
   };
 
-  const handleDemoUser = (e) => {
-    const credential = "Demo-lition";
-    const password = "password";
-    e.preventDefault();
-    return dispatch(sessionActions.login({ credential, password})).catch(
-      async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setUsernameErrors(data.errors);
-      }
-    );
+  const clearForm = (e) => {
+    setUsername('');
+    setEmail('');
+    setPassword('');
+    setConfirmPassword('');
   }
 
   const userKeyUp = (e) => {
     e.preventDefault();
     userCancelBtn.style.opacity = '100%'
-    userInput.value.length && emailInput.value.length && pwrdInput.value.length && confirmPwrdInput.value.length ? signupBtn.style.opacity = "100%" : signupBtn.style.opacity = "25%";
+    userInput.value.length && emailInput.value.length && pwrdInput.value.length && confirmPwrdInput.value.length ? saveBtn.style.opacity = "100%" : saveBtn.style.opacity = "25%";
   }
 
   const userFocus = (e) => {
     e.preventDefault();
     setUsernameErrors([]);
-    const userLabelDiv = document.getElementsByClassName('sgn-user-label-div')[0];
-    const userLabel = document.getElementsByClassName('sgn-user-label')[0];
-    const userCancelBtn = document.getElementsByClassName('sgn-user-cancel-btn')[0];
-    const userInput = document.getElementsByClassName('sgn-user-signup-input')[0];
+    const userLabelDiv = document.getElementsByClassName('set-user-label-div')[0];
+    const userLabel = document.getElementsByClassName('set-user-label')[0];
+    const userCancelBtn = document.getElementsByClassName('set-user-cancel-btn')[0];
+    const userInput = document.getElementsByClassName('set-user-signup-input')[0];
 
     userLabelDiv.style.background = 'linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1))';
     userLabelDiv.style.width = '75px';
@@ -113,10 +86,10 @@ export function SignupForm() {
 
   const userBlur = (e) => {
     e.preventDefault();
-    const userLabelDiv = document.getElementsByClassName('sgn-user-label-div')[0];
-    const userLabel = document.getElementsByClassName('sgn-user-label')[0];
-    const userCancelBtn = document.getElementsByClassName('sgn-user-cancel-btn')[0];
-    const userInput = document.getElementsByClassName('sgn-user-signup-input')[0];
+    const userLabelDiv = document.getElementsByClassName('set-user-label-div')[0];
+    const userLabel = document.getElementsByClassName('set-user-label')[0];
+    const userCancelBtn = document.getElementsByClassName('set-user-cancel-btn')[0];
+    const userInput = document.getElementsByClassName('set-user-signup-input')[0];
     userLabelDiv.style.background = 'white';
     userLabelDiv.style.border = 'none';
     userLabelDiv.style.width = '75px';
@@ -144,16 +117,16 @@ export function SignupForm() {
   const emailKeyUp = (e) => {
     e.preventDefault();
     emailCancelBtn.style.opacity = '100%'
-    userInput.value.length && emailInput.value.length && pwrdInput.value.length && confirmPwrdInput.value.length ? signupBtn.style.opacity = "100%" : signupBtn.style.opacity = "25%";
+    userInput.value.length && emailInput.value.length && pwrdInput.value.length && confirmPwrdInput.value.length ? saveBtn.style.opacity = "100%" : saveBtn.style.opacity = "25%";
   }
 
   const emailFocus = (e) => {
     e.preventDefault();
     setEmailErrors([]);
-    const emailLabelDiv = document.getElementsByClassName('sgn-email-label-div')[0];
-    const emailLabel = document.getElementsByClassName('sgn-email-label')[0];
-    const emailCancelBtn = document.getElementsByClassName('sgn-email-cancel-btn')[0];
-    const emailInput = document.getElementsByClassName('sgn-email-signup-input')[0];
+    const emailLabelDiv = document.getElementsByClassName('set-email-label-div')[0];
+    const emailLabel = document.getElementsByClassName('set-email-label')[0];
+    const emailCancelBtn = document.getElementsByClassName('set-email-cancel-btn')[0];
+    const emailInput = document.getElementsByClassName('set-email-signup-input')[0];
 
     emailLabelDiv.style.background = 'linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1))';
     emailLabelDiv.style.width = '50px';
@@ -169,10 +142,10 @@ export function SignupForm() {
 
   const emailBlur = (e) => {
     e.preventDefault();
-    const emailLabelDiv = document.getElementsByClassName('sgn-email-label-div')[0];
-    const emailLabel = document.getElementsByClassName('sgn-email-label')[0];
-    const emailCancelBtn = document.getElementsByClassName('sgn-email-cancel-btn')[0];
-    const emailInput = document.getElementsByClassName('sgn-email-signup-input')[0];
+    const emailLabelDiv = document.getElementsByClassName('set-email-label-div')[0];
+    const emailLabel = document.getElementsByClassName('set-email-label')[0];
+    const emailCancelBtn = document.getElementsByClassName('set-email-cancel-btn')[0];
+    const emailInput = document.getElementsByClassName('set-email-signup-input')[0];
     emailLabelDiv.style.background = 'white';
     emailLabelDiv.style.border = 'none';
     emailLabelDiv.style.width = '50px';
@@ -200,16 +173,16 @@ export function SignupForm() {
   const pwrdKeyUp = (e) => {
     e.preventDefault();
     pwrdCancelBtn.style.opacity = '100%'
-    userInput.value.length && emailInput.value.length && pwrdInput.value.length && confirmPwrdInput.value.length ? signupBtn.style.opacity = "100%" : signupBtn.style.opacity = "25%";
+    userInput.value.length && emailInput.value.length && pwrdInput.value.length && confirmPwrdInput.value.length ? saveBtn.style.opacity = "100%" : saveBtn.style.opacity = "25%";
   }
 
   const pwrdFocus = (e) => {
     e.preventDefault();
     setPwrdErrors([]);
-    const pwrdLabelDiv = document.getElementsByClassName('sgn-pwrd-label-div')[0];
-    const pwrdLabel = document.getElementsByClassName('sgn-pwrd-label')[0];
-    const pwrdCancelBtn = document.getElementsByClassName('sgn-pwrd-cancel-btn')[0];
-    const pwrdInput = document.getElementsByClassName('sgn-pwrd-signup-input')[0];
+    const pwrdLabelDiv = document.getElementsByClassName('set-pwrd-label-div')[0];
+    const pwrdLabel = document.getElementsByClassName('set-pwrd-label')[0];
+    const pwrdCancelBtn = document.getElementsByClassName('set-pwrd-cancel-btn')[0];
+    const pwrdInput = document.getElementsByClassName('set-pwrd-signup-input')[0];
 
     pwrdLabelDiv.style.background = 'linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1))';
     pwrdLabelDiv.style.width = '75px';
@@ -225,10 +198,10 @@ export function SignupForm() {
 
   const pwrdBlur = (e) => {
     e.preventDefault();
-    const pwrdLabelDiv = document.getElementsByClassName('sgn-pwrd-label-div')[0];
-    const pwrdLabel = document.getElementsByClassName('sgn-pwrd-label')[0];
-    const pwrdCancelBtn = document.getElementsByClassName('sgn-pwrd-cancel-btn')[0];
-    const pwrdInput = document.getElementsByClassName('sgn-pwrd-signup-input')[0];
+    const pwrdLabelDiv = document.getElementsByClassName('set-pwrd-label-div')[0];
+    const pwrdLabel = document.getElementsByClassName('set-pwrd-label')[0];
+    const pwrdCancelBtn = document.getElementsByClassName('set-pwrd-cancel-btn')[0];
+    const pwrdInput = document.getElementsByClassName('set-pwrd-signup-input')[0];
     pwrdLabelDiv.style.background = 'white';
     pwrdLabelDiv.style.border = 'none';
     pwrdLabelDiv.style.width = '75px';
@@ -256,16 +229,16 @@ export function SignupForm() {
   const confirmPwrdKeyUp = (e) => {
     e.preventDefault();
     confirmPwrdCancelBtn.style.opacity = '100%'
-    userInput.value.length && emailInput.value.length && pwrdInput.value.length && confirmPwrdInput.value.length ? signupBtn.style.opacity = "100%" : signupBtn.style.opacity = "25%";
+    userInput.value.length && emailInput.value.length && pwrdInput.value.length && confirmPwrdInput.value.length ? saveBtn.style.opacity = "100%" : saveBtn.style.opacity = "25%";
   }
 
   const confirmPwrdFocus = (e) => {
     e.preventDefault();
     setConfirmPwrdErrors([]);
-    const confirmPwrdLabelDiv = document.getElementsByClassName('sgn-confirm-pwrd-label-div')[0];
-    const confirmPwrdLabel = document.getElementsByClassName('sgn-confirm-pwrd-label')[0];
-    const confirmPwrdCancelBtn = document.getElementsByClassName('sgn-confirm-pwrd-cancel-btn')[0];
-    const confirmPwrdInput = document.getElementsByClassName('sgn-confirm-pwrd-signup-input')[0];
+    const confirmPwrdLabelDiv = document.getElementsByClassName('set-confirm-pwrd-label-div')[0];
+    const confirmPwrdLabel = document.getElementsByClassName('set-confirm-pwrd-label')[0];
+    const confirmPwrdCancelBtn = document.getElementsByClassName('set-confirm-pwrd-cancel-btn')[0];
+    const confirmPwrdInput = document.getElementsByClassName('set-confirm-pwrd-signup-input')[0];
 
     confirmPwrdLabelDiv.style.background = 'linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1))';
     confirmPwrdLabelDiv.style.width = '130px';
@@ -281,10 +254,10 @@ export function SignupForm() {
 
   const confirmPwrdBlur = (e) => {
     e.preventDefault();
-    const confirmPwrdLabelDiv = document.getElementsByClassName('sgn-confirm-pwrd-label-div')[0];
-    const confirmPwrdLabel = document.getElementsByClassName('sgn-confirm-pwrd-label')[0];
-    const confirmPwrdCancelBtn = document.getElementsByClassName('sgn-confirm-pwrd-cancel-btn')[0];
-    const confirmPwrdInput = document.getElementsByClassName('sgn-confirm-pwrd-signup-input')[0];
+    const confirmPwrdLabelDiv = document.getElementsByClassName('set-confirm-pwrd-label-div')[0];
+    const confirmPwrdLabel = document.getElementsByClassName('set-confirm-pwrd-label')[0];
+    const confirmPwrdCancelBtn = document.getElementsByClassName('set-confirm-pwrd-cancel-btn')[0];
+    const confirmPwrdInput = document.getElementsByClassName('set-confirm-pwrd-signup-input')[0];
     confirmPwrdLabelDiv.style.background = 'white';
     confirmPwrdLabelDiv.style.border = 'none';
     confirmPwrdLabelDiv.style.width = '120px';
@@ -310,11 +283,11 @@ export function SignupForm() {
   }
 
   const pwrdVisible = (e) => {
-    const pwrdCancelBtn = document.getElementsByClassName('sgn-pwrd-cancel-btn')[0];
-    const pwrdEye = document.getElementsByClassName('sgn-show-pwrd-btn')[0];
-    const pwrdInput = document.getElementsByClassName('sgn-pwrd-signup-input')[0];
-    const pwrdLabelDiv = document.getElementsByClassName('sgn-pwrd-label-div')[0];
-    const pwrdLabel = document.getElementsByClassName('sgn-pwrd-label')[0];
+    const pwrdCancelBtn = document.getElementsByClassName('set-pwrd-cancel-btn')[0];
+    const pwrdEye = document.getElementsByClassName('set-show-pwrd-btn')[0];
+    const pwrdInput = document.getElementsByClassName('set-pwrd-signup-input')[0];
+    const pwrdLabelDiv = document.getElementsByClassName('set-pwrd-label-div')[0];
+    const pwrdLabel = document.getElementsByClassName('set-pwrd-label')[0];
 
     e.preventDefault();
     if(!showPassword){
@@ -339,11 +312,11 @@ export function SignupForm() {
   }
 
   const confirmPwrdVisible = (e) => {
-    const confirmPwrdCancelBtn = document.getElementsByClassName('sgn-confirm-pwrd-cancel-btn')[0];
-    const confirmPwrdEye = document.getElementsByClassName('sgn-show-confirm-pwrd-btn')[0];
-    const confirmPwrdInput = document.getElementsByClassName('sgn-confirm-pwrd-signup-input')[0];
-    const confirmPwrdLabelDiv = document.getElementsByClassName('sgn-confirm-pwrd-label-div')[0];
-    const confirmPwrdLabel = document.getElementsByClassName('sgn-confirm-pwrd-label')[0];
+    const confirmPwrdCancelBtn = document.getElementsByClassName('set-confirm-pwrd-cancel-btn')[0];
+    const confirmPwrdEye = document.getElementsByClassName('set-show-confirm-pwrd-btn')[0];
+    const confirmPwrdInput = document.getElementsByClassName('set-confirm-pwrd-signup-input')[0];
+    const confirmPwrdLabelDiv = document.getElementsByClassName('set-confirm-pwrd-label-div')[0];
+    const confirmPwrdLabel = document.getElementsByClassName('set-confirm-pwrd-label')[0];
 
     e.preventDefault();
     if(!showConfirmPassword){
@@ -366,84 +339,84 @@ export function SignupForm() {
 
   return (
     <>
-      <form className="sgn-signup-container" onSubmit={handleSubmit}>
-        <h1 className="sgn-signup-header">Signup</h1>
-        {/* <ul className="sgn-signup-error-list">
+      <form className="set-signup-container" onSubmit={handleSubmit}>
+        <h1 className="set-signup-header">Settings</h1>
+        {/* <ul className="set-signup-error-list">
           {errors.map((error, idx) => (
-            <li className="sgn-signup-error-item" key={idx}>{error}</li>
+            <li className="set-signup-error-item" key={idx}>{error}</li>
           ))}
         </ul> */}
-        <div className="sgn-input-container">
+        <div className="set-input-container">
           {usernameErrors.length > 0 && (
-            <li className="sgn-username-error">{usernameErrors}</li>
+            <li className="set-username-error">{usernameErrors}</li>
           )}
-          <div className="sgn-user-input-box" onFocus={(e) => userFocus(e)}>
-            <div className="sgn-user-label-div">
-              <label className="sgn-user-label">Username</label>
+          <div className="set-user-input-box" onFocus={(e) => userFocus(e)}>
+            <div className="set-user-label-div">
+              <label className="set-user-label">Username</label>
             </div>
             <input
-                className="sgn-user-signup-input"
+                className="set-user-signup-input"
                 type="text"
                 value={username}
-                placeholder="Enter username"
+                placeholder="Change username"
                 autoComplete="username"
                 onChange={(e) => setUsername(e.target.value)}
                 onKeyUp={(e) => userKeyUp(e)}
                 onBlur={(e) => userBlur(e)}
                 required
               />
-            <button className="sgn-user-cancel-btn" onClick={(e) => userClear(e)}></button>
+            <button className="set-user-cancel-btn" onClick={(e) => userClear(e)}></button>
           </div>
           {emailErrors.length > 0 && (
-            <li className="sgn-email-error">{emailErrors}</li>
+            <li className="set-email-error">{emailErrors}</li>
           )}
-          <div className="sgn-email-input-box" onFocus={(e) => emailFocus(e)}>
-            <div className="sgn-email-label-div">
-              <label className="sgn-email-label">Email</label>
+          <div className="set-email-input-box" onFocus={(e) => emailFocus(e)}>
+            <div className="set-email-label-div">
+              <label className="set-email-label">Email</label>
             </div>
             <input
-                className="sgn-email-signup-input"
+                className="set-email-signup-input"
                 type="text"
                 value={email}
-                placeholder="Enter Email"
+                placeholder="Change Email"
                 autoComplete="email"
                 onChange={(e) => setEmail(e.target.value)}
                 onKeyUp={(e) => emailKeyUp(e)}
                 onBlur={(e) => emailBlur(e)}
                 required
               />
-            <button className="sgn-email-cancel-btn" onClick={(e) => emailClear(e)}></button>
+            <button className="set-email-cancel-btn" onClick={(e) => emailClear(e)}></button>
           </div>
           {pwrdErrors.length > 0 && (
-            <li className="sgn-pwrd-error">{pwrdErrors}</li>
+            <li className="set-pwrd-error">{pwrdErrors}</li>
           )}
-          <div className="sgn-pwrd-input-box" onFocus={(e) => pwrdFocus(e)}>
-            <div className="sgn-pwrd-label-div">
-              <label className="sgn-pwrd-label">Password</label>
+          <div className="set-pwrd-input-box" onFocus={(e) => pwrdFocus(e)}>
+            <div className="set-pwrd-label-div">
+              <label className="set-pwrd-label">Password</label>
             </div>
             <input
-              className="sgn-pwrd-signup-input"
+              className="set-pwrd-signup-input"
               type="password"
               value={password}
-              placeholder="Enter password"
+              placeholder="Change password"
               autoComplete="current-password"
               onChange={(e) => setPassword(e.target.value)}
               onKeyUp={(e) => pwrdKeyUp(e)}
               onBlur={(e) => pwrdBlur(e)}
               required
             />
-            <button className="sgn-pwrd-cancel-btn" onClick={(e) => pwrdClear(e)}></button>
-            <button className="sgn-show-pwrd-btn" onClick={(e) => pwrdVisible(e)}></button>
+            <button className="set-pwrd-cancel-btn" onClick={(e) => pwrdClear(e)}></button>
+            <button className="set-show-pwrd-btn" onClick={(e) => pwrdVisible(e)}></button>
           </div>
           {confirmPwrdErrors.length > 0 && (
-            <li className="sgn-confirm-pwrd-error">{confirmPwrdErrors}</li>
+            <li className="set-confirm-pwrd-error">{confirmPwrdErrors}</li>
           )}
-          <div className="sgn-confirm-pwrd-input-box" onFocus={(e) => confirmPwrdFocus(e)}>
-            <div className="sgn-confirm-pwrd-label-div">
-              <label className="sgn-confirm-pwrd-label">Confirm password</label>
+          <div className="set-confirm-pwrd-input-box" onFocus={(e) => confirmPwrdFocus(e)}>
+            <div className="set-confirm-pwrd-label-div">
+              <label className="set-confirm-pwrd-label">Confirm password</label>
             </div>
             <input
-              className="sgn-confirm-pwrd-signup-input"
+              className="set-confirm-pwrd-signup-input"
               type="password"
               value={confirmPassword}
               placeholder="Confirm password"
@@ -453,17 +426,18 @@ export function SignupForm() {
               onBlur={(e) => confirmPwrdBlur(e)}
               required
             />
-            <button className="sgn-confirm-pwrd-cancel-btn" onClick={(e) => confirmPwrdClear(e)}></button>
-            <button className="sgn-show-confirm-pwrd-btn" onClick={(e) => confirmPwrdVisible(e)}></button>
+            <button className="set-confirm-pwrd-cancel-btn" onClick={(e) => confirmPwrdClear(e)}></button>
+            <button className="set-show-confirm-pwrd-btn" onClick={(e) => confirmPwrdVisible(e)}></button>
           </div>
         </div>
-        <div className="sgn-signup-demo-container">
-          <button className="sgn-signup-btn" type="submit">Sign up</button>
-          <button className="sgn-demo-btn" type="button" onClick={(e) => handleDemoUser(e)}>Demo</button>
+        <div className="set-submit-container">
+          <button className="set-cancel-btn" type="button" onClick={(e) => clearForm(e)}>Cancel</button>
+          <button className="set-save-btn" type="submit" onClick={(e) => handleSubmit(e)}>Save</button>
+
         </div>
       </form>
     </>
   );
 }
 
-export default SignupForm;
+export default SettingsForm;

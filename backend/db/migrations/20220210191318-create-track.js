@@ -17,22 +17,11 @@ module.exports = {
         allowNull: false,
         references: { model: "Users" }
       },
-      genre_Id: {
-        type: Sequelize.INTEGER,
-        references: { model: "Genres" }
-      },
-      image: {
-        type: Sequelize.STRING
-      },
       url: {
         type: Sequelize.STRING
       },
       description: {
         type: Sequelize.TEXT
-      },
-      duration: {
-        type: Sequelize.DECIMAL(10, 2),
-        allowNull: false
       },
       createdAt: {
         allowNull: false,

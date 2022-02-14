@@ -11,6 +11,7 @@ const Upload = () => {
   const [description, setDescription] = useState("");
   const [genre_Id, setGenre_Id] = useState(null);
   const [url, setUrl] = useState('');
+  const [duration, setDuration] = useState(0);
   const [errors, setErrors] = useState([]);
 
   const dispatch = useDispatch();
@@ -18,10 +19,9 @@ const Upload = () => {
   const userId = sessionUser.id;
 
   const handleSubmit = (e) => {
-    const userId = sessionUser.id;
     e.preventDefault();
     let newErrors = [];
-    dispatch(upload({ music, image, title, userId, description }))
+    dispatch(upload({ music, image, title, userId, url, description, genre_Id  }))
       .then(() => {
         setMusic(null);
         setImage(null);
@@ -92,9 +92,6 @@ const Upload = () => {
 
   const titleFocus = (e) => {
     // e.preventDefault();
-    const titleLabel = document.getElementsByClassName('upl-title-label')[0];
-    const titleLabelDiv = document.getElementsByClassName('upl-title-div')[0];
-    const titleInput = document.getElementsByClassName('upl-title-input')[0];
     titleLabelDiv.style.backgroundImage = 'linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1))';
     titleLabelDiv.style.width = '130px';
     titleLabel.style.color = "white";
@@ -166,36 +163,36 @@ const Upload = () => {
 
   }
 
-//   const dropHandler = (e) => {
-//     console.log(e);
-//     console.log('File(s) dropped');
+  const dropHandler = (e) => {
+    console.log(e);
+    console.log('File(s) dropped');
 
-//     // Prevent default behavior (Prevent file from being opened)
+    // Prevent default behavior (Prevent file from being opened)
 
-//     if (e.dataTransfer.items) {
-//       // Use DataTransferItemList interface to access the file(s)
-//       for (let i = 0; i < e.dataTransfer.items.length; i++) {
-//         // If dropped items aren't files, reject them
-//         if (e.dataTransfer.items[i].kind === 'file') {
-//           let file = e.dataTransfer.items[i].getAsFile();
-//           console.log('... file[' + i + '].name = ' + file.name);
-//           console.log(file)
-//         }
-//       }
-//     } else {
-//       // Use DataTransfer interface to access the file(s)
-//       for (let i = 0; i < e.dataTransfer.files.length; i++) {
-//         console.log('... file[' + i + '].name = ' + e.dataTransfer.files[i].name);
-//       }
-//     }
-//   }
+    if (e.dataTransfer.items) {
+      // Use DataTransferItemList interface to access the file(s)
+      for (let i = 0; i < e.dataTransfer.items.length; i++) {
+        // If dropped items aren't files, reject them
+        if (e.dataTransfer.items[i].kind === 'file') {
+          let file = e.dataTransfer.items[i].getAsFile();
+          console.log('... file[' + i + '].name = ' + file.name);
+          console.log(file)
+        }
+      }
+    } else {
+      // Use DataTransfer interface to access the file(s)
+      for (let i = 0; i < e.dataTransfer.files.length; i++) {
+        console.log('... file[' + i + '].name = ' + e.dataTransfer.files[i].name);
+      }
+    }
+  }
 
-//   const  dragOverHandler = (e) => {
-//     console.log('File(s) in drop zone');
+  const  dragOverHandler = (e) => {
+    console.log('File(s) in drop zone');
 
-//     // Prevent default behavior (Prevent file from being opened)
-//     e.preventDefault();
-//   }
+    // Prevent default behavior (Prevent file from being opened)
+    e.preventDefault();
+  }
 
 
 
@@ -213,28 +210,29 @@ const Upload = () => {
           <div className="upl-music-label-div" >
             <label className="upl-music-label">Choose an MP3 or WAV file</label>
           </div>
-          <div className="upl-music-drop" >
+          <div className="upl-music-drop" onDrop={(e) => dropHandler(e)} onDragOver={(e) => dragOverHandler(e)}>
+            <p className="upl-dragndrop-title">Drag and drop your music here</p>
             <div className="upl-music-file-div">
-                <p className="upl-music-text">Choose a file to upload</p>
-                <input
-                    className="upl-music-input"
-                    type="file"
-                    name="files"
-                    onChange={updateMusic}
-                    />
+              <p className="upl-music-text">or choose a file to upload</p>
+              <input
+                  className="upl-music-input"
+                  type="file"
+                  name="files"
+                  onChange={updateMusic}
+                />
             </div>
           </div>
           <div className="upl-music-label-div" >
             <label className="upl-music-label">Choose a JPG or PNG file</label>
           </div>
-          <div className="upl-music-drop">
-            {/* <p className="upl-dragndrop-title">Drag and drop your image here</p> */}
+          <div className="upl-music-drop" onDrop={(e) => dropHandler(e)} onDragOver={(e) => dragOverHandler(e)}>
+            <p className="upl-dragndrop-title">Drag and drop your image here</p>
             <div className="upl-music-file-div">
-              <p className="upl-music-text">Copy and paste an image url </p>
+              <p className="upl-music-text">or choose a file to upload</p>
               <input
-                  className="upl-image-input"
-                  type="text"
-                  name="image"
+                  className="upl-music-input"
+                  type="file"
+                  name="files"
                   onChange={updateImage}
                 />
             </div>
@@ -261,7 +259,7 @@ const Upload = () => {
             <div className="upl-description-label-div">
               <label className="upl-description-label">Description</label>
             </div>
-            <textarea
+            <input
               className="upl-description-input"
               type="text"
               placeholder="Enter a description for your track..."
@@ -274,7 +272,7 @@ const Upload = () => {
             />
             <div className="upl-description-cancel-btn" onClick={() => descriptionClear()}></div>
           </div>
-          {/* <div className="upl-genre-select-box">
+          <div className="upl-genre-select-box">
             <div className="upl-genre-label-div">
               <label className="upl-genre-label">Genre</label>
             </div>
@@ -291,7 +289,7 @@ const Upload = () => {
               <option value='techno'>Techno</option>
               <option value='house'>House</option>
             </select>
-          </div> */}
+          </div>
         </div>
         <button className="upl-login-btn" type="submit">Upload</button>
       </form>

@@ -5,17 +5,27 @@ body {
     font-size: 16px;
 }
 
+.upl-upload-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
 .upl-upload-container {
-    width: 570px;
+    width: 500px;
     height: 800px;
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 1);
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: left;
+    justify-content: center;
     align-items: left;
-    padding-left: 30px;
+    padding-left: 100px;
+    gap: 20px;
 }
 
 .upl-login-error-list {
@@ -45,13 +55,15 @@ body {
     color: black;
     width: 400px;
     height: 80px;
+    margin-bottom: -30px;
+    margin-top: -40px;
 }
 
 .upl-input-container {
     display: flex;
     flex-direction: column;
     width: 500px;
-    height: 500px;
+    height: 600px;
     align-items: left;
     justify-content: space-around;
 }
@@ -62,11 +74,12 @@ body {
     align-items: center;
     justify-content: center;
     width: 400px;
-    height: 200px;
+    height: 150px;
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     color: black;
     font-weight: 700;
+    margin-top: -40px;
 }
 
 .upl-dragndrop-title {
@@ -331,4 +344,79 @@ select:-webkit-autofill:focus {
     margin-left: 350px;
     margin-top: 25px;
     opacity: 25%;
+}
+
+.upl-title-label-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 20px;
+    position: relative;
+    margin-bottom: -10px;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.upl-description-label-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 20px;
+    position: relative;
+    margin-bottom: -10px;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.upl-title-label {
+    font-family: antarctican-headline, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 16px;
+    background-color: white;
+    color: black;
+    width: 75px;
+    height: 20px;
+    text-align: center;
+    margin-top: -5px;
+}
+
+.upl-description-label {
+    font-family: antarctican-headline, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 16px;
+    background-color: white;
+    color: black;
+    width: 75px;
+    height: 20px;
+    text-align: center;
+    margin-top: -5px;
+}
+
+.upl-title-input {
+    font-family: antarctican-headline;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 14px;
+    width: 375px;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: -10px;
+}
+
+.upl-description-input {
+    font-family: antarctican-headline;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 14px;
+    width: 375px;
+    height: 80px;
+    padding-left: 10px;
+    padding-right: -10px;
+    resize: none;
 }

@@ -1,0 +1,20 @@
+.set-wrapper {
+    background-image: linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: top;
+    width: 100vw;
+    height: 100vh;
+}
+
+.settings-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    height: 800px;
+    background: white;
+    border-bottom-left-radius: 5rem;
+    border-bottom-right-radius: 5rem;
+}

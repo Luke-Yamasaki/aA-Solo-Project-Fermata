@@ -26,10 +26,10 @@ function Navbar({ isLoaded }){
       <nav className="navbar">
          <ul className="nav-list">
             <li>
-              <NavLink className="home-logo" exact to="/">Fermata</NavLink>
+              <NavLink className="nav-logo" exact to="/">Fermata</NavLink>
             </li>
             <li>
-              <Link className="home-txt" to='/discover'>Discover</Link>
+              <Link className="nav-txt" to='/discover'>Discover</Link>
             </li>
             <li>
               <div className="searchbar">
@@ -41,14 +41,16 @@ function Navbar({ isLoaded }){
               </div>
             </li>
             <li>
-              <Link className="home-txt" to='/upload'>Upload</Link>
+              <Link className="nav-txt" to='/tracks'>Upload</Link>
             </li>
             <li>
-              <ProfileButton className="home-txt" user={sessionUser}/>
-              <div className="user-name-display">{sessionUser.username}</div>
+              <div className="nav-user-box">
+                <ProfileButton className="nav-txt" user={sessionUser}/>
+                <div className="nav-user-name-display">Hello {sessionUser.username}!</div>
+              </div>
             </li>
             <li>
-              <Link className="home-txt" onClick={handleLogout} to='/login'>{sessionUser ? "Logout" : "Login"}</ Link>
+              <Link className="nav-txt" onClick={handleLogout} to='/login'>{sessionUser ? "Logout" : "Login"}</ Link>
             </li>
           </ul>
       </ nav>
@@ -58,12 +60,12 @@ function Navbar({ isLoaded }){
       <nav className="navbar">
         <ul className="nav-list">
           <li>
-            <NavLink className="home-logo" exact to="/">Fermata</NavLink>
+            <NavLink className="nav-logo" exact to="/">Fermata</NavLink>
           </li>
           <li>
-            <Link className="home-txt" to='/discover'>Discover</Link>
+            <Link className="nav-txt" to='/discover'>Discover</Link>
           </li>
-          <li className="home-item">
+          <li className="nav-item">
             <div className="searchbar">
               <div className="search-icon"></div>
               <form className="searchbar-form" action="search" metho="post">
@@ -73,10 +75,10 @@ function Navbar({ isLoaded }){
             </div>
           </li>
           <li>
-            <Link className="home-txt" to='/signup'>Sign up</Link>
+            <Link className="nav-txt" to='/signup'>Sign up</Link>
           </li>
           <li>
-            <Link className="home-txt" onClick={handleLogout} to="/login">{sessionUser ? "Logout" : "Login"}</ Link>
+            <Link className="nav-txt" onClick={handleLogout} to="/login">{sessionUser ? "Logout" : "Login"}</ Link>
           </li>
         </ul>
       </nav>

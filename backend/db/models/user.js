@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [60, 60]
       }
-    }
+    },
   },
   {
     defaultScope: {
@@ -88,6 +88,22 @@ module.exports = (sequelize, DataTypes) => {
       hashedPassword
     });
     return await User.scope('currentUser').findByPk(user.id);
+  };
+
+  User.edit = async function ({ id, username, email, password }) {
+    const hashedPassword = bcrypt.hashSync(password);
+    const user = await User.scope('loginUser').findOne({
+      where: {
+        id: id
+      }
+    })
+
+    if (user) {
+      user.username = username;
+      user.email = email;
+      user.hashedPassword = hashedPassword;
+      return await User.scope('currentUser').findByPk(id);
+    }
   };
 
   return User;

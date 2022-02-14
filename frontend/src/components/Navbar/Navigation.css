@@ -5,7 +5,7 @@ body {
 
 .navbar {
     width: 100vw;
-    height: 60px;
+    height: 45px;
     box-sizing: border-box;
     background: linear-gradient(to bottom, #C77DFF, #753ADB);
     display: flex;
@@ -18,31 +18,34 @@ body {
 }
 
 .nav-list {
-    width: 70vw;
-    height: 50px;
+    width: 45vw;
+    height: 20px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     position: -webkit-sticky;
     position: sticky;
     top: 0px;
-    list-style:none;
-    list-style-type:none;
+    list-style: none;
+    list-style-type: none;
 }
 
-.home-logo {
+.nav-logo {
     font-family: antarctican-headline, sans-serif;
     font-weight: 700;
     font-style: normal;
     font-size: 40px;
     color: white;
     text-decoration: none;
+    position: absolute;
+    margin-left: -100px;
+    margin-top: -31px;
 }
 
-.home-txt {
+.nav-txt {
     font-family: antarctican-headline, sans-serif;
-    font-weight: 400;
+    font-weight: 500;
     font-style: normal;
     font-size: 24px;
     color: white;
@@ -68,7 +71,7 @@ body {
     align-items: center;
     border: 0.15px solid rgba(255, 255, 255, 0.25);
     border-radius: 0.5rem;
-    height: 30px;
+    height: 25px;
     width: 15vw;
     overflow: hidden;
     background-color: #9554E9;
@@ -76,9 +79,8 @@ body {
 
 .searchbar-form {
     font-family: antarctican-headline, sans-serif;
-    font-weight: 400;
     font-style: normal;
-    font-size: 21px;
+    font-size: 14px;
     color: white;
 }
 
@@ -95,13 +97,14 @@ body {
 .search-input{
     text-align: left;
     font-family: antarctican-headline, sans-serif;
-    font-weight: 400;
+    font-weight: 500;
     font-style: normal;
-    font-size: 21px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
     color: white;
     text-decoration: none;
     background-color: rgba(0, 0, 0, 0);
-    height:33px;
+    height:20px;
     width: 13vw;
     border: 0px;
     color: white;
@@ -126,32 +129,36 @@ body {
 .search-input::-webkit-input-placeholder {
     color: rgba(255, 255, 255, 0.5);
     font-family: antarctican-headline, sans-serif;
-    font-size: 21px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.25px;
     font-style: normal;
 }
 
 .search-input:-ms-input-placeholder {
     color: rgba(255, 255, 255, 0.5);
     font-family: antarctican-headline, sans-serif;
-    font-size: 21px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.25px;
     font-style: normal;
 }
 
 .search-input::-moz-input-placeholder {
     color: rgba(255, 255, 255, 0.5);
     font-family: antarctican-headline, sans-serif;
-    font-size: 21px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.25px;
     font-style: normal;
 }
 
 .search-input:-moz-input-placeholder {
     color: rgba(255, 255, 255, 0.5);
     font-family: antarctican-headline, sans-serif;
-    font-size: 21px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
     font-style: normal;
 }
 
@@ -165,9 +172,10 @@ select:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0 30px #9554E9 inset !important;
     -webkit-text-fill-color: white !important;
     -webkit-font-family: antarctican-headline, sans-serif;
-    -webkit-font-weight: 400;
+    -webkit-font-weight: 500;
+    letter-spacing: 0.25px;
     font-style: normal;
-    font-size: 21px;
+    font-size: 16px;
     color: white;
     caret-color: white;
 }
@@ -175,5 +183,18 @@ select:-webkit-autofill:focus {
 .login-logout {
     background-color: none;
     border: none;
-
 }
+
+.nav-user-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 150px
+}
+
+.nav-user-name-display{
+    font-size: 18px;
+    color: white;
+}
+

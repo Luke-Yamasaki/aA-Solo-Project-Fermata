@@ -8,7 +8,6 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Discover from "./pages/Discover";
 import Upload from "./pages/Upload";
-import Users from "./sub-pages/Users";
 import Settings from "./pages/Settings";
 import Tracks from "./pages/Tracks";
 
@@ -39,15 +38,11 @@ function App() {
         <Navbar isLoaded={isLoaded} />
         <Upload />
       </Route>
-      <Route path="/users">
-        <Navbar isLoaded={isLoaded} />
-        <Users />
-      </Route>
       <Route path="/tracks">
         <Navbar isLoaded={isLoaded} />
         <Tracks />
       </Route>
-      <Route path="/settings">
+      <Route path="/users/:id">
         <Navbar isLoaded={isLoaded} />
         <Settings />
       </Route>

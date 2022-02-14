@@ -4,7 +4,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
-const { singleMulterUpload, singlePublicFileUpload, multipleMulterUpload, multiplePublicFileUpload } = require("../../awsS3");
+const { singleMulterUpload, singlePublicFileUpload } = require("../../awsS3");
 
 const router = express.Router();
 
@@ -57,16 +57,13 @@ const validateSignup = [
 
 router.post(
   "/",
-  singleMulterUpload("image"),
   validateSignup,
   asyncHandler(async (req, res) => {
     const { email, password, username } = req.body;
-    const profileImageUrl = await singlePublicFileUpload(req.file);
     const user = await User.signup({
       username,
       email,
-      password,
-      profileImageUrl,
+      password
     });
 
     setTokenCookie(res, user);
@@ -77,15 +74,28 @@ router.post(
   })
 );
 
-router.put(
+router.post(
   "/:id",
-  singleMulterUpload("image"),
+  // singleMulterUpload("image"),
+  validateSignup,
   asyncHandler(async (req, res) => {
-    const id = req.params.id;
-    const profileImageUrl = await singlePublicFileUpload(req.file);
-    await User.update({ profileImageUrl }, { where: { id } });
+    const username = req.body.username;
+    const email = req.body.email;
+    const password = req.body.passwrd;
+    const id = req.id
+    console.log(id)
+    const user = await User.edit({
+      id,
+      username,
+      email,
+      password
+    })
 
-    res.json({ profileImageUrl });
+    setTokenCookie(res, user);
+
+    return res.json({
+      user,
+    });
   })
 );
 

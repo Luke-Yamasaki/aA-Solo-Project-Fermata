@@ -1,0 +1,544 @@
+.set-signup-container {
+    width: 550px;
+    height: 640px;
+    background-color: white;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
+    padding-left: 30px;
+    margin-left: 65px;
+}
+
+.set-signup-error-list {
+    padding: 0px;
+    margin: 0px;
+}
+
+h1.set-signup-header {
+    margin: 0px;
+    padding: 0px;
+}
+
+.set-signup-error-item {
+    font-family: antarctican-headline;
+    font-weight: 700;
+    font-style: normal;
+    list-style-type: none;
+    list-style: none;
+    font-size: 19px;
+    padding-left: 0px;
+    background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+.set-signup-header {
+    font-family: antarctican-headline, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 75px;
+    color: black;
+    width: 50px;
+    height: 120px;
+}
+
+.set-input-container {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 400px;
+    align-items: left;
+    justify-content: space-around;
+}
+
+.set-user-input-box {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 80px;
+    /* border: 1px solid black;
+    background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));; */
+}
+
+.set-email-input-box {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 80px;
+    /* border: 1px solid black;
+    background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));; */
+}
+
+.set-pwrd-input-box {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 80px;
+    /* border: 1px solid black;
+    background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));; */
+}
+
+
+.set-confirm-pwrd-input-box {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 80px;
+    /* border: 1px solid black;
+    background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));; */
+}
+
+.set-user-label-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 20px;
+    position: relative;
+    margin-bottom: -10px;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.set-email-label-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 20px;
+    position: relative;
+    margin-bottom: -10px;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.set-pwrd-label-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 20px;
+    position: relative;
+    margin-bottom: -10px;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.set-confirm-pwrd-label-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 20px;
+    position: relative;
+    margin-bottom: -10px;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.set-user-label {
+    font-family: antarctican-headline, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 16px;
+    background-color: white;
+    color: black;
+    width: 75px;
+    height: 20px;
+    text-align: center;
+    margin-top: -5px;
+}
+
+.set-email-label {
+    font-family: antarctican-headline, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 16px;
+    background-color: white;
+    color: black;
+    width: 50px;
+    height: 20px;
+    text-align: center;
+    margin-top: -5px;
+}
+
+.set-pwrd-label {
+    font-family: antarctican-headline, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 16px;
+    background-color: white;
+    color: black;
+    width: 75px;
+    height: 20px;
+    text-align: center;
+    margin-top: -5px;
+}
+
+.set-confirm-pwrd-label {
+    font-family: antarctican-headline, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 16px;
+    background-color: white;
+    color: black;
+    width: 125px;
+    height: 20px;
+    text-align: center;
+    margin-top: -5px;
+}
+
+.set-user-signup-input {
+    font-family: antarctican-headline;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 14px;
+    width: 375px;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: -10px;
+}
+
+.set-email-signup-input {
+    font-family: antarctican-headline;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 14px;
+    width: 375px;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: -10px;
+}
+
+.set-pwrd-signup-input {
+    font-family: antarctican-headline;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 14px;
+    width: 375px;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: -10px;
+}
+
+.set-confirm-pwrd-signup-input {
+    font-family: antarctican-headline;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 14px;
+    width: 375px;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: -10px;
+}
+
+.set-user-signup-input:-webkit-autofill,
+.set-user-signup-input:-webkit-autofill:hover,
+.set-user-signup-input:-webkit-autofill:focus,
+.set-user-signup-input:-webkit-autofill:active,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-text-fill-color: black !important;
+    -webkit-font-family: antarctican-headline, sans-serif;
+    -webkit-font-weight: 700;
+    font-style: normal;
+    font-size: 14px;
+    color: black;
+    caret-color: white;
+}
+
+.set-email-signup-input:-webkit-autofill,
+.set-email-signup-input:-webkit-autofill:hover,
+.set-email-signup-input:-webkit-autofill:focus,
+.set-email-signup-input:-webkit-autofill:active,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-text-fill-color: black !important;
+    -webkit-font-family: antarctican-headline, sans-serif;
+    -webkit-font-weight: 700;
+    font-style: normal;
+    font-size: 14px;
+    color: black;
+    caret-color: white;
+}
+
+.set-pwrd-signup-input:-webkit-autofill,
+.set-pwrd-signup-input:-webkit-autofill:hover,
+.set-pwrd-signup-input:-webkit-autofill:focus,
+.set-pwrd-signup-input:-webkit-autofill:active,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-text-fill-color: black !important;
+    -webkit-font-family: antarctican-headline, sans-serif;
+    -webkit-font-weight: 700;
+    font-style: normal;
+    font-size: 14px;
+    color: black;
+    caret-color: white;
+}
+
+.set-confirm-pwrd-signup-input:-webkit-autofill,
+.set-confirm-pwrd-signup-input:-webkit-autofill:hover,
+.set-confirm-pwrd-signup-input:-webkit-autofill:focus,
+.set-confirm-pwrd-signup-input:-webkit-autofill:active,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-text-fill-color: black !important;
+    -webkit-font-family: antarctican-headline, sans-serif;
+    -webkit-font-weight: 700;
+    font-style: normal;
+    font-size: 14px;
+    color: black;
+    caret-color: white;
+}
+
+.set-user-cancel-btn {
+    border: none;
+    background: none;
+    background-image: url("../../../../public/icons/cancel-btn.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 12px;
+    height: 12px;
+    filter: invert(0.5);
+    margin-left: 360px;
+    margin-top: -29px;
+    opacity: 0%;
+}
+
+.set-user-cancel-btn:hover {
+    width: 15px;
+    height: 15px;
+    filter: invert(1);
+    margin-left: 359px;
+    margin-top: -30px;
+}
+
+.set-email-cancel-btn {
+    border: none;
+    background: none;
+    background-image: url("../../../../public/icons/cancel-btn.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 12px;
+    height: 12px;
+    filter: invert(0.5);
+    margin-left: 360px;
+    margin-top: -29px;
+    opacity: 0%;
+}
+
+.set-email-cancel-btn:hover {
+    width: 15px;
+    height: 15px;
+    filter: invert(1);
+    margin-left: 359px;
+    margin-top: -30px;
+}
+
+.set-pwrd-cancel-btn {
+    background: none;
+    border: none;
+    background-image: url("../../../../public/icons/cancel-btn.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 12px;
+    height: 12px;
+    filter: invert(0.5);
+    margin-left: 360px;
+    margin-top: -29px;
+    opacity: 0%;
+}
+
+.set-pwrd-cancel-btn:hover {
+    width: 15px;
+    height: 15px;
+    filter: invert(1);
+    margin-left: 359px;
+    margin-top: -32px;
+}
+
+.set-confirm-pwrd-cancel-btn {
+    background: none;
+    border: none;
+    background-image: url("../../../../public/icons/cancel-btn.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 12px;
+    height: 12px;
+    filter: invert(0.5);
+    margin-left: 360px;
+    margin-top: -29px;
+    opacity: 0%;
+}
+
+.set-confirm-pwrd-cancel-btn:hover {
+    width: 15px;
+    height: 15px;
+    filter: invert(1);
+    margin-left: 359px;
+    margin-top: -32px;
+}
+
+.set-signup-btn {
+    font-family: antarctican-headline;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 18px;
+    width: 300px;
+    height: 35px;
+    margin-top: 20px;
+    color: white;
+    border: none;
+    border-radius: 0.25em;
+    background-image: linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));
+    opacity: 35%;
+}
+
+.set-signup-btn:hover {
+    opacity: 50%;
+}
+
+.set-show-pwrd-btn {
+    background: none;
+    border: none;
+    background-image: url("../../../../public/icons/eye.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    margin-left: 330px;
+    margin-top: -15px;
+    opacity: 25%;
+}
+
+.set-show-pwrd-btn:hover {
+    width: 23px;
+    height: 23px;
+    margin-left: 328px;
+    margin-top: -17px;
+    opacity: 50%;
+}
+
+.set-show-confirm-pwrd-btn {
+    background: none;
+    border: none;
+    background-image: url("../../../../public/icons/eye.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    margin-left: 330px;
+    margin-top: -15px;
+    opacity: 25%;
+}
+
+.set-show-confirm-pwrd-btn:hover {
+    width: 23px;
+    height: 23px;
+    margin-left: 328px;
+    margin-top: -17px;
+    opacity: 50%;
+}
+
+.set-username-error {
+    list-style: none;
+    list-style-type: none;
+    font-weight: 700;
+    background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 450px;
+    height: 30px;
+}
+
+.set-email-error {
+    list-style: none;
+    list-style-type: none;
+    font-weight: 700;
+    background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 450px;
+    height: 30px;
+}
+
+.set-pwrd-error {
+    list-style: none;
+    list-style-type: none;
+    font-weight: 700;
+    background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 450px;
+    height: 30px;
+}
+
+.set-confirm-pwrd-error {
+    list-style: none;
+    list-style-type: none;
+    font-weight: 700;
+    background: -webkit-linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 450px;
+    height: 30px;
+}
+
+
+.set-cancel-btn {
+    font-family: antarctican-headline;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 18px;
+    width: 75px;
+    height: 35px;
+    margin-top: 20px;
+    color: white;
+    border: none;
+    border-radius: 0.25em;
+    background-image: linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));
+    opacity: 35%;
+}
+
+.set-cancel-btn:hover {
+    opacity: 100%;
+}
+
+.set-submit-container {
+    display: flex;
+    flex-direction: row;
+    width: 400px;
+    justify-content: space-between;
+    ;
+}
+
+.set-save-btn {
+    font-family: antarctican-headline;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 18px;
+    width: 150px;
+    height: 35px;
+    margin-top: 20px;
+    color: white;
+    border: none;
+    border-radius: 0.25em;
+    background-image: linear-gradient(rgba(200, 125, 255, 1), rgba(120, 60, 220, 1));
+    opacity: 35%;
+}

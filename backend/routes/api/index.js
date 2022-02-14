@@ -5,6 +5,7 @@ const tracksRouter = require('./tracks');
 const discoverRouter = require('./discover');
 const signupRouter = require('./signup');
 const loginRouter = require('./login');
+const settingsRouter = require('./settings');
 
 // GET /api/set-token-cookie
 const asyncHandler = require('express-async-handler');
@@ -47,5 +48,6 @@ router.use('/tracks', tracksRouter);
 router.use('/discover', discoverRouter);
 router.use('/signup', signupRouter);
 router.use('/login', loginRouter);
+router.use('/settings', settingsRouter);
 
 module.exports = router;
